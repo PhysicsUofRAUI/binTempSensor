@@ -59,6 +59,10 @@ return it.
 
 issues: This code needs some way to specify what sensor which we will be extracting the
 temperature from.
+
+Variables:
+  sensor_number : this will be used to select which sensor. Right
+    there is no way to do this. See issue #7
 */
 float getData(int sensor_number) {
   for(int i = 0;i < 5;i++){
