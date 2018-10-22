@@ -15,6 +15,22 @@ The Raspberrypi will be used for the same reason as arduino. It will be used to 
 ## Temperature Sensor
 The only data collection viewed for this system is the temperature sensor to see where the grain is at. It was thought that the best sensor for this would be a infrared sensor (some of that is discussed in more detail in the 'current base idea' pdf). This is because the sensor would not have direct contact with the grain. This may be unnecessary :confused: and some advice on it would certainly be welcome :smiley:.
 
+## Rough Idea of GSM Sheild and Arduino
+This plan involves conecting the Arduino on the top of the bin to a GSM sheild. This would then be used to send a text message alert to the farmer in question. 
+
+### Rough cost
+- $25 for each Arduino (seems we need an Arduino for each temperature sensor).
+- RF link kit for around $15 https://www.mouser.be/ProductDetail/seeed-studio/113060000/?qs=1%252b9yuXKSi8Ar4bRwCH3EMg==&countrycode=DE&currencycode=EUR
+- $25 or so for GSM sheild https://www.banggood.com/nl/SIM900-Quad-band-GSM-GPRS-Shield-Development-Board-For-Arduino-p-964229.html?gmcCountry=BE&currency=EUR&createTmp=1&utm_source=googleshopping&utm_medium=cpc_elc&utm_content=zouzou&utm_campaign=pla-be-ele-diy-pc&gclid=EAIaIQobChMI7omYi9ma3gIVQeJ3Ch3oSgNcEAQYAyABEgL3bvD_BwE&cur_warehouse=CN
+- $20 or so for each temperature sensor https://www.mouser.be/ProductDetail/melexis/mlx90614esf-baa-000-tu/?qs=KuGPmAKtFKVScNDmoJmFVw==&countrycode=DE&currencycode=EUR
+- say the cost of the battery pack around $15
+
+The total cost would then be about $125.
+
+This cost is for two sensor points, one at the bottom and one at the top. I would say hang one in the middle but it would be hard to communicate through the grain with the link kit.
+
+
+
 # Contributing
 Please anyone feel free to contribute. It would especially be appreciated if people with more experience on the hardware related, people involved on farms (like me :smiley:) who have experience to what is really needed to help production and save bushels, and people with experience writing software for this type of hardware.
 
