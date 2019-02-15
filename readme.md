@@ -1,7 +1,7 @@
 # Bin Temperature Sensor
 This project was started to build a affordable 'gadjet' to monitor the temperature of grain in a bin. There is some products already available that do this but they cost a 1000 or more dollars, and from what I can tell contain an excessive amount of sensors. The one to be developed here will have a emphasis on being cheap and doing what needs to be done (aka do not buy or use things that are not needed).
 
-# Hardware
+# Main Hardware
 ## Arduino
 The arduino will be used for simplicity for at least the original version. The arduino is likely the cheapest development board on the market, however there could be others and I'd like you to tell me about them if you find them.
 
@@ -15,12 +15,12 @@ The Raspberrypi will be used for the same reason as arduino. It will be used to 
 ## Temperature Sensor
 The only data collection viewed for this system is the temperature sensor to see where the grain is at. It was thought that the best sensor for this would be a infrared sensor (some of that is discussed in more detail in the 'current base idea' pdf). This is because the sensor would not have direct contact with the grain. This may be unnecessary :confused: and some advice on it would certainly be welcome :smiley:.
 
-An option for a sensor that does make direct contact is the DHT 22 sensor that senses both humidity and temperature. It may be interesting to log both the humidity data and the temperature data and do analysis on it to see if the humidity could be used as a early warning. This is the sensor that I, Kody, will be using to construct a first prototype later this December :snowman: hopefully.
+An option for a sensor that does make direct contact is the DHT 22 sensor that senses both humidity and temperature. It may be interesting to log both the humidity data and the temperature data and do analysis on it to see if the humidity could be used as a early warning. This is the sensor that I, Kody, will be using to construct a first prototype hopefully this weekend :snowman:.
 
 ## Rough Idea of GSM Sheild and wired connection to Arduino
 This plan will have three sensors and a GSM sheild directly connected to a Arduino sitting at the top of the bin. One of the sensors will be close to the bottom, another in the middle, and the last one at the top. They will report the temperature and the humidity at periodic intervals. The Arduino will then send a message if the bin starts heating.
 
-More information on this will later be included in its own separate folder to be named 'GSM_Arduino_DHT22'.
+More information is located in the folder Arduino_GSM.
 
 ## RF Link between Raspberry Pi and Arduino with sensor having wired connection to Arduino
 This is largely the same as with the GSM sheild except that the Arduino reports everything to the Raspberry Pi. It is then up to the farmer to look at the data trend or for the Raspberry Pi to alert the farmer in some way (email, GSM, etc). This version could be useful in locations that lack cell service in certain areas but has better in others. The RF link would take the data from a no wifi or cell recption to a place with wifi or cell reception.
