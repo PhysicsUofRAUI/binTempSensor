@@ -14,5 +14,6 @@ This plan will have three sensors and a GSM sheild directly connected to a Ardui
 - https://www.instructables.com/id/Make-A-Cheap-Lithium-Battery-Pack/
 - https://randomnerdtutorials.com/sim900-gsm-gprs-shield-arduino/
 - https://www.instructables.com/id/Sim900-GSM-module-interfacing-to-arduino/
+- http://wiki.epalsite.com/index.php?title=SIM900_Quad-Band_GPRS_shield
 
 Will add more later when I get to my other computer.
