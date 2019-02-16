@@ -17,17 +17,17 @@ The only data collection viewed for this system is the temperature sensor to see
 
 An option for a sensor that does make direct contact is the DHT 22 sensor that senses both humidity and temperature. It may be interesting to log both the humidity data and the temperature data and do analysis on it to see if the humidity could be used as a early warning. This is the sensor that I, Kody, will be using to construct a first prototype hopefully this weekend :snowman:.
 
-## Rough Idea of GSM Sheild and wired connection to Arduino
+# Rough Idea of GSM Sheild and wired connection to Arduino
 This plan will have three sensors and a GSM sheild directly connected to a Arduino sitting at the top of the bin. One of the sensors will be close to the bottom, another in the middle, and the last one at the top. They will report the temperature and the humidity at periodic intervals. The Arduino will then send a message if the bin starts heating.
 
 More information is located in the folder Arduino_GSM.
 
-## RF Link between Raspberry Pi and Arduino with sensor having wired connection to Arduino
+# RF Link between Raspberry Pi and Arduino with sensor having wired connection to Arduino
 This is largely the same as with the GSM sheild except that the Arduino reports everything to the Raspberry Pi. It is then up to the farmer to look at the data trend or for the Raspberry Pi to alert the farmer in some way (email, GSM, etc). This version could be useful in locations that lack cell service in certain areas but has better in others. The RF link would take the data from a no wifi or cell recption to a place with wifi or cell reception.
 
 Again more information on this one will again be located in its own separate folder. This folder will be called 'RF_RaspberryPi_Arduino'.
 
-## WiFi and Arduino
+# WiFi and Arduino
 Another option could be using WiFi directly to transmit the data. This might work for some places, but since bin yards are large and located in rural places WiFi may not be availble. It is useful to look into though since it would drive the cost down and increase connection reliability.
 
 Any future work on this will be included in the folder 'Wifi'
