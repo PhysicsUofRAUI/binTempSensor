@@ -27,9 +27,21 @@ int difference;
 Purpose: To get the temperature when it fails. This function will first be called when
   the primary attempt to attain the temperature failed, and it will then be recusivly
   called until such time the temperature is attained.
+Parameters:
+  sensor_needed: This is an object that represents the sensor that failed to
+    read.
+Variables:
+  new_event: The event object as defined in the DHT libraries. This is a variable
+    used to collect information from an event. It will be used in this function
+    to get the temperature information.
+
+Returns:
+  temperature: a float that is the temperature that was read.
 */
-float getTemperatureInCaseOfError(sensors_event_t new_event, DHT_Unified sensor_needed)
+float getTemperatureInCaseOfError(DHT_Unified sensor_needed)
 {
+  sensors_event_t new_event;
+
   delay(4000);
 
   sensor_needed.temperature().getEvent(&new_event);
@@ -44,7 +56,12 @@ float getTemperatureInCaseOfError(sensors_event_t new_event, DHT_Unified sensor_
   return temperature;
 }
 
+/*
+This is the setup function.
 
+It will start all the sensors, communication with the computer and initailize the
+sensor
+*/
 void setup() {
   Serial.begin(9600);
 
@@ -57,35 +74,49 @@ void setup() {
   Serial.print("Everthing Initialized From Kody");
 }
 
+
+/*
+This is the loop. It will get measurements from all three sensors, display
+the temperature, and the difference from the previous value.
+
+It will then wait 10 seconds to do the next set of measurements then it will repeat.
+*/
 void loop() {
-  // Delay between measurements.
-  delay(10000);
-  // Get temperature event and print its value.
+  // Get temperature event
   sensors_event_t event1;
   dht1.temperature().getEvent(&event1);
+
   if (isnan(event1.temperature)) {
-    // send the message
-    float temperature = getTemperatureInCaseOfError(event1, dht1);
+    // try to get the event again
+    float temperature = getTemperatureInCaseOfError(dht1);
+
+    // find the difference between current value and previous value
     difference = temperature - temp1;
 
+    // When getting the event is a success print the temperature
     Serial.print("temperature 1: ");
     Serial.print(temperature);
     Serial.print(", difference: ");
     Serial.print(difference);
 
+    // update the temp1 variable
     temp1 = temperature;
   }
-
-
   else {
+    // Get the current temperature from sensor 1
     cur_temp1 = event1.temperature;
+
+    // find the difference between current value and previous value
     difference = cur_temp1 - temp1;
 
+    // print the current temperature and the difference from the
+    // previous temperature
     Serial.print("temperature 1: ");
     Serial.print(cur_temp1);
     Serial.print(", difference: ");
     Serial.print(difference);
 
+    // update temp 1
     temp1 = cur_temp1;
   }
 
@@ -93,25 +124,35 @@ void loop() {
   sensors_event_t event2;
   dht2.temperature().getEvent(&event2);
   if (isnan(event2.temperature)) {
-    float temperature = getTemperatureInCaseOfError(event2, dht2);
+    // try to get the event again
+    float temperature = getTemperatureInCaseOfError(dht2);
+
+    // find the difference between current value and previous value
     difference = temperature - temp2;
 
+    // When getting the event is a success print the temperature
     Serial.print("temperature 2: ");
     Serial.print(temperature);
     Serial.print(", difference: ");
     Serial.print(difference);
 
-    temp1 = temperature;
+    // update the temp1 variable
+    temp2 = temperature;
   }
   else {
+    // Get the current temperature from sensor 2
     cur_temp2 = event2.temperature;
+
+    // find the difference between current value and previous value
     difference = cur_temp2 - temp2;
 
+    // When getting the event is a success print the temperature
     Serial.print("temperature 2: ");
     Serial.print(cur_temp2);
     Serial.print(", difference: ");
     Serial.print(difference);
 
+    // update the temp2 variable
     temp2 = cur_temp2;
   }
 
@@ -119,26 +160,38 @@ void loop() {
   sensors_event_t event3;
   dht3.temperature().getEvent(&event3);
   if (isnan(event3.temperature)) {
-    float temperature = getTemperatureInCaseOfError(event3, dht3);
-    difference = temperature - temp1;
+    // try to get the event again
+    float temperature = getTemperatureInCaseOfError(dht3);
 
+    // find the difference between current value and previous value
+    difference = temperature - temp3;
+
+    // When getting the event is a success print the temperature
     Serial.print("temperature 3: ");
     Serial.print(temperature);
     Serial.print(", difference: ");
     Serial.print(difference);
 
-    temp1 = temperature;
+    // update the temp3 variable
+    temp3 = temperature;
   }
   else {
+    // Get the current temperature from sensor 3
     cur_temp3 = event3.temperature;
 
+    // find the difference between current value and previous value
     difference = cur_temp3 - temp3;
 
+    // When getting the event is a success print the temperature
     Serial.print("temperature 3: ");
     Serial.print(cur_temp3);
     Serial.print(", difference: ");
     Serial.print(difference);
 
+    // update the temp3 variable
     temp2 = cur_temp2;
   }
+
+  // Delay between measurements.
+  delay(10000);
 }
