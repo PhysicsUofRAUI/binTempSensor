@@ -18,10 +18,10 @@ DHT_Unified dht1(DHTPIN1, DHTTYPE);
 
 void setup()
 {
-  mySerial.begin(9600);   // Setting the baud rate of GSM Module
+  mySerial.begin(19200);   // Setting the baud rate of GSM Module
   Serial.begin(9600);    // Setting the baud rate of Serial Monitor (Arduino)
   mySerial.println("AT+CNMI=2,2,0,0,0");
-  delay(100);
+  delay(10000);
   
   dht1.begin();
 
@@ -35,13 +35,15 @@ void loop()
   
   // float humidity = event1.humidity;
   float temperature = event1.temperature;
+  Serial.println("Hello");
   mySerial.println("AT+CMGF=1");    //Sets the GSM Module in Text Mode
   delay(1000);  // Delay of 1000 milli seconds or 1 second
-  mySerial.println("AT+CMGS=\"+XXxxxxxxxxxx\"\r"); // Replace x with mobile number X with countryCode
-  delay(1000);
+  mySerial.println("AT+CMGS=\"+13069219610\"\r"); // Replace x with mobile number X with countryCode
+  delay(10000);
   mySerial.println("I am SMS from GSM Module\n");// The SMS text you want to send
   mySerial.println("The current temperature is:"+String(temperature)+"*C");
-  delay(100);
-   mySerial.println((char)26);// ASCII code of CTRL+Z
-  delay(60000);
+  delay(1000);
+  mySerial.println((char)26);// ASCII code of CTRL+Z
+  Serial.println(temperature);
+  delay(1000);
 }

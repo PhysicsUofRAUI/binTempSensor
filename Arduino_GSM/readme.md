@@ -19,3 +19,15 @@ This plan will have three sensors and a GSM sheild directly connected to a Ardui
 - http://wiki.seeedstudio.com/GPRS_Shield_v1.0/
 
 Will add more later when I get to my other computer.
+
+# The 'ChangedCodeToWhatIThinkWillWork'
+This was created by me from looking at what the gsmAccess.begin() does. To find the code for the .begin() function follow these steps.
+1. Go to your Arduino directory
+- For me it was in my home directory and it was called 'Arduino'
+2. Then switch into the directory called 'libraries'
+3. In this directory there should be one called MKRGSM open that one.
+4. In MKRGSM there should be two files called GSM.h and GSM.cpp
+- This is where the code is located.
+5. It is the begin function and details how the function operates
+
+What I realized when looking at it is that it seems to be hanging when the modem is being started. Since this is the case I decided to start the modem myself before (lines 46 to 58) and then move to the begin function. Instead of passing in true for the 'restart' variable of begin I pass in false. It no longer hangs but as of right now I still get no network, so I have ordered a antenna and will test that next week. 

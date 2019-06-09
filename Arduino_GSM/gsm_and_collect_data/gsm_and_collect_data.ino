@@ -1,11 +1,14 @@
+// Include the GSM library
+#include <MKRGSM.h>
+
 #include <DHT.h>
 #include <DHT_U.h>
 
 #include <Adafruit_Sensor.h>
 
-#define DHTPIN1            5
-#define DHTPIN2            4
-#define DHTPIN3            6
+#define DHTPIN1            2
+#define DHTPIN2            3
+#define DHTPIN3            4
 
 #define DHTTYPE           DHT22
 
@@ -56,13 +59,38 @@ float getTemperatureInCaseOfError(DHT_Unified sensor_needed)
   return temperature;
 }
 
-/*
-This is the setup function.
 
-It will start all the sensors, communication with the computer and initailize the
-sensor
-*/
+
+
+// initialize the library instance
+GSM gsmAccess;
+GSM_SMS sms;
+
 void setup() {
+  // initialize serial communications and wait for port to open:
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+
+  Serial.println("SMS Messages Sender");
+
+  // connection state
+  bool connected = false;
+
+  // Start GSM shield
+  // If your SIM has PIN, pass it as a parameter of begin() in quotes
+  while (!connected) {
+    if (gsmAccess.begin(0000) == GSM_READY) {
+      connected = true;
+    } else {
+      Serial.println("Not connected");
+      delay(1000);
+    }
+  }
+
+  Serial.println("GSM initialized");
+
   Serial.begin(9600);
 
   dht1.begin();
@@ -71,8 +99,9 @@ void setup() {
 
   sensor_t sensor;
 
-  Serial.print("Everthing Initialized From Kody");
+  Serial.println("All sensors initialized");
 }
+
 
 
 /*
@@ -94,27 +123,33 @@ void loop() {
     difference = temperature - temp1;
 
     // When getting the event is a success print the temperature
-    Serial.print("temperature 1: ");
-    Serial.print(temperature);
-    Serial.print(", difference: ");
-    Serial.println(difference);
+    sms.beginSMS("13069218495");
+    sms.print("Hello there");
+    sms.print("temperature 1: ");
+    sms.print(temperature);
+    sms.print(", difference: ");
+    sms.println(difference);
+    sms.endSMS();
 
     // update the temp1 variable
     temp1 = temperature;
   }
   else {
     // Get the current temperature from sensor 1
-    cur_temp1 = event1.temperature;
+    float temperature = event1.temperature;
 
     // find the difference between current value and previous value
-    difference = cur_temp1 - temp1;
+    difference = temperature - temp1;
 
     // print the current temperature and the difference from the
     // previous temperature
-    Serial.print("temperature 1: ");
-    Serial.print(cur_temp1);
-    Serial.print(", difference: ");
-    Serial.println(difference);
+    sms.beginSMS("13069218495");
+    sms.print("Hello there");
+    sms.print("temperature 1: ");
+    sms.print(temperature);
+    sms.print(", difference: ");
+    sms.println(difference);
+    sms.endSMS();
 
     // update temp 1
     temp1 = cur_temp1;
@@ -131,26 +166,32 @@ void loop() {
     difference = temperature - temp2;
 
     // When getting the event is a success print the temperature
-    Serial.print("temperature 2: ");
-    Serial.print(temperature);
-    Serial.print(", difference: ");
-    Serial.println(difference);
+    sms.beginSMS("13069218495");
+    sms.print("Hello there");
+    sms.print("temperature 2: ");
+    sms.print(temperature);
+    sms.print(", difference: ");
+    sms.println(difference);
+    sms.endSMS();
 
     // update the temp1 variable
     temp2 = temperature;
   }
   else {
     // Get the current temperature from sensor 2
-    cur_temp2 = event2.temperature;
+    float temperature = event2.temperature;
 
     // find the difference between current value and previous value
-    difference = cur_temp2 - temp2;
+    difference = temperature - temp2;
 
     // When getting the event is a success print the temperature
-    Serial.print("temperature 2: ");
-    Serial.print(cur_temp2);
-    Serial.print(", difference: ");
-    Serial.println(difference);
+    sms.beginSMS("13069218495");
+    sms.print("Hello there");
+    sms.print("temperature 2: ");
+    sms.print(temperature);
+    sms.print(", difference: ");
+    sms.println(difference);
+    sms.endSMS();
 
     // update the temp2 variable
     temp2 = cur_temp2;
@@ -167,31 +208,38 @@ void loop() {
     difference = temperature - temp3;
 
     // When getting the event is a success print the temperature
-    Serial.print("temperature 3: ");
-    Serial.print(temperature);
-    Serial.print(", difference: ");
-    Serial.println(difference);
+    sms.beginSMS("13069218495");
+    sms.print("Hello there");
+    sms.print("temperature 3: ");
+    sms.print(temperature);
+    sms.print(", difference: ");
+    sms.println(difference);
+    sms.endSMS();
 
     // update the temp3 variable
     temp3 = temperature;
   }
   else {
     // Get the current temperature from sensor 3
-    cur_temp3 = event3.temperature;
+    float temperature = event3.temperature;
 
     // find the difference between current value and previous value
     difference = cur_temp3 - temp3;
 
     // When getting the event is a success print the temperature
-    Serial.print("temperature 3: ");
-    Serial.print(cur_temp3);
-    Serial.print(", difference: ");
-    Serial.println(difference);
+    sms.beginSMS("13069218495");
+    sms.print("Hello there");
+    sms.print("temperature 3: ");
+    sms.print(temperature);
+    sms.print(", difference: ");
+    sms.println(difference);
+    sms.endSMS();
 
     // update the temp3 variable
     temp3 = cur_temp3;
   }
 
   // Delay between measurements.
-  delay(10000);
+  delay(30000);
 }
+
