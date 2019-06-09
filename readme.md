@@ -5,29 +5,42 @@ This project was started to build a affordable 'gadjet' to monitor the temperatu
 ## Arduino
 The arduino will be used for simplicity for at least the original version. The arduino is likely the cheapest development board on the market, however there could be others and I'd like you to tell me about them if you find them.
 
-It will be used to collect the data from temperature sensors from the bin then send them to the Raspberrypi.
+The one that is being planned to use for the first prototype is the MKRGSM 1400. It will collect the data and send the notifications.
 
 Later costs could be reduced by putting together the necessary parts to create the device with the least amount of parts necessary.
 
 ## Raspberrypi
-The Raspberrypi will be used for the same reason as arduino. It will be used to receive all the data from the arduinos. It will also display it on a screen. It could also send a notification to someone. I don't know if this can be replaced with anything, but if anyone has an idea please say :smiley:.
+The Raspberrypi will be used for the same reason as arduino. In some planned versions it will be used to collect and display data from the Arduino. This version is currently not being designed. It will also display it on a screen. It could also send a notification to someone. I don't know if this can be replaced with anything, but if anyone has an idea please say :smiley:.
 
 ## Temperature Sensor
 The only data collection viewed for this system is the temperature sensor to see where the grain is at. It was thought that the best sensor for this would be a infrared sensor (some of that is discussed in more detail in the 'current base idea' pdf). This is because the sensor would not have direct contact with the grain. This may be unnecessary :confused: and some advice on it would certainly be welcome :smiley:.
 
 An option for a sensor that does make direct contact is the DHT 22 sensor that senses both humidity and temperature. It may be interesting to log both the humidity data and the temperature data and do analysis on it to see if the humidity could be used as a early warning.
 
-# Rough Idea of GSM Sheild and wired connection to Arduino
+## RF Link kits
+These can be bought from many vendors. They enable communication usually on 433mHz or 350mHz frequencies. This is thought to be a good option for communicating between the various electronics.
+
+# Ideas for Implementation
+## GSM Sheild and wired connection to Arduino
 This plan will have three sensors and a GSM sheild directly connected to a Arduino sitting at the top of the bin. One of the sensors will be close to the bottom, another in the middle, and the last one at the top. They will report the temperature and the humidity at periodic intervals. The Arduino will then send a message if the bin starts heating.
+
+This is the model that is currently being made as it is the easiest to make.
 
 More information is located in the folder Arduino_GSM.
 
-# RF Link between Raspberry Pi and Arduino with sensor having wired connection to Arduino
+## RF Link between Raspberry Pi and Arduino with sensor having wired connection to Arduino
 This is largely the same as with the GSM sheild except that the Arduino reports everything to the Raspberry Pi. It is then up to the farmer to look at the data trend or for the Raspberry Pi to alert the farmer in some way (email, GSM, etc). This version could be useful in locations that lack cell service in certain areas but has better in others. The RF link would take the data from a no wifi or cell recption to a place with wifi or cell reception.
 
 Again more information on this one will again be located in its own separate folder. This folder will be called 'RF_RaspberryPi_Arduino'.
 
-# WiFi and Arduino
+## RF Link Between Arduinos
+In this implementation one MKRGSM would collect data from a fleet of Arduino Unos. The MKRGSM would check to see if the data is ok, and if it is not it would send a notification to the farmer.
+
+Some sample code of Arduino RF communication can be found in arduino_rf_communication folder.
+
+This will likely be the next implementation built.
+
+## WiFi and Arduino
 Another option could be using WiFi directly to transmit the data. This might work for some places, but since bin yards are large and located in rural places WiFi may not be availble. It is useful to look into though since it would drive the cost down and increase connection reliability.
 
 Any future work on this will be included in the folder 'Wifi'
