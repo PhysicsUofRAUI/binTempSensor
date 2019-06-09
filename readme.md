@@ -15,7 +15,7 @@ The Raspberrypi will be used for the same reason as arduino. It will be used to 
 ## Temperature Sensor
 The only data collection viewed for this system is the temperature sensor to see where the grain is at. It was thought that the best sensor for this would be a infrared sensor (some of that is discussed in more detail in the 'current base idea' pdf). This is because the sensor would not have direct contact with the grain. This may be unnecessary :confused: and some advice on it would certainly be welcome :smiley:.
 
-An option for a sensor that does make direct contact is the DHT 22 sensor that senses both humidity and temperature. It may be interesting to log both the humidity data and the temperature data and do analysis on it to see if the humidity could be used as a early warning. This is the sensor that I, Kody, will be using to construct a first prototype hopefully this weekend :snowman:.
+An option for a sensor that does make direct contact is the DHT 22 sensor that senses both humidity and temperature. It may be interesting to log both the humidity data and the temperature data and do analysis on it to see if the humidity could be used as a early warning.
 
 # Rough Idea of GSM Sheild and wired connection to Arduino
 This plan will have three sensors and a GSM sheild directly connected to a Arduino sitting at the top of the bin. One of the sensors will be close to the bottom, another in the middle, and the last one at the top. They will report the temperature and the humidity at periodic intervals. The Arduino will then send a message if the bin starts heating.
