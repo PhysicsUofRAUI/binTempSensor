@@ -60,7 +60,7 @@ void setup() {
   // Start GSM shield
   // If your SIM has PIN, pass it as a parameter of begin() in quotes
   while (!connected) {
-    if (gsmAccess.begin("0000", false, true) == GSM_READY) {
+    if (gsmAccess.begin("0000") == GSM_READY) {
       connected = true;
     } else {
       Serial.println("Not connected");
@@ -72,26 +72,28 @@ void setup() {
 }
 
 void loop() {
-
-  Serial.print("Enter a mobile number: ");
-  char remoteNum[20];  // telephone number to send sms
-  readSerial(remoteNum);
-  Serial.println(remoteNum);
-
-  // sms text
-  Serial.print("Now, enter SMS content: ");
-  char txtMsg[200];
-  readSerial(txtMsg);
-  Serial.println("SENDING");
-  Serial.println();
-  Serial.println("Message:");
-  Serial.println(txtMsg);
+//
+//  Serial.print("Enter a mobile number: ");
+//  char remoteNum[20];  // telephone number to send sms
+//  readSerial(remoteNum);
+//  Serial.println(remoteNum);
+//
+//  // sms text
+//  Serial.print("Now, enter SMS content: ");
+//  char txtMsg[200];
+//  readSerial(txtMsg);
+//  Serial.println("SENDING");
+//  Serial.println();
+//  Serial.println("Message:");
+//  Serial.println(txtMsg);
 
   // send the message
-  sms.beginSMS(remoteNum);
-  sms.print(txtMsg);
+  sms.beginSMS("13069219628");
+  sms.print("Hello");
   sms.endSMS();
   Serial.println("\nCOMPLETE!\n");
+
+  delay (100000);
 }
 
 /*
