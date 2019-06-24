@@ -45,6 +45,9 @@ Another option could be using WiFi directly to transmit the data. This might wor
 
 Any future work on this will be included in the folder 'Wifi'
 
+# Archive
+This is where I put stuff that is old but might be useful later.
+
 # Contributing
 Please anyone feel free to contribute. It would especially be appreciated if people with more experience on the hardware related, people involved on farms (like me :smiley:) who have experience to what is really needed to help production and save bushels, and people with experience writing software for this type of hardware.
 
