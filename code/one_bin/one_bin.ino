@@ -8,9 +8,7 @@
 
 // Include all the needed libraries
 #include <MKRGSM.h>
-#include <DHT.h>
 #include <DHT_U.h>
-#include <Adafruit_Sensor.h>
 
 // Set up everything for the cellular device to work
 
@@ -110,8 +108,7 @@ void setup() {
   dht1.begin();
   dht2.begin();
   dht3.begin();
-
-  sensor_t sensor;
+  
 
   // connection state
   bool connected = false;
@@ -136,24 +133,26 @@ void setup() {
     }
   }
 
-  sms.beginSMS("13069219628");
+  sms.beginSMS("your-phone-number");
   sms.print("Connected!");
   sms.endSMS();
 }
 
 void loop() {
+  
+  sensors_event_t event;
+  
   // Get temperature event 1
-  sensors_event_t event1;
-  dht1.temperature().getEvent(&event1);
+  dht1.temperature().getEvent(&event);
   
   // Get the current temperature from sensor 1
-  current_temp = event1.temperature;
+  current_temp = event.temperature;
 
   limit_reached = temperature_increase_limit_reached(temp1, current_temp);
 
   if (limit_reached) {
     difference = current_temp - temp1;
-    sms.beginSMS("13069219628");
+    sms.beginSMS("your-phone-number");
     sms.print("temperature 1 has increased by ");
     sms.print(difference);
     sms.endSMS();
@@ -163,17 +162,16 @@ void loop() {
 
 
   // Get temperature event 2
-  sensors_event_t event2;
-  dht2.temperature().getEvent(&event2);
+  dht2.temperature().getEvent(&event);
   
   // Get the current temperature from sensor 2
-  current_temp = event2.temperature;
+  current_temp = event.temperature;
 
   limit_reached = temperature_increase_limit_reached(temp2, current_temp);
 
   if (limit_reached) {
     difference = current_temp - temp2;
-    sms.beginSMS("13069219628");
+    sms.beginSMS("your-phone-number");
     sms.print("temperature 2 has increased by ");
     sms.print(difference);
     sms.endSMS();
@@ -183,17 +181,16 @@ void loop() {
   
 
   // Get temperature event 3
-  sensors_event_t event3;
-  dht3.temperature().getEvent(&event3);
+  dht3.temperature().getEvent(&event);
 
   // Get the current temperature from sensor 1
-  temp3 = event3.temperature;
+  temp3 = event.temperature;
 
   limit_reached = temperature_increase_limit_reached(temp3, current_temp);
 
   if (limit_reached) {
     difference = current_temp - temp3;
-    sms.beginSMS("13069219628");
+    sms.beginSMS("your-phone-number");
     sms.print("temperature 3 has increased by ");
     sms.print(difference);
     sms.endSMS();
