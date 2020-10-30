@@ -21,3 +21,7 @@ add_library(test_runner STATIC
 add_executable(DHT_U
         DHT_U.cpp)
 target_link_libraries(DHT_U test_runner)
+
+add_executable(bin_sensor
+        bin_sensor.cpp)
+target_link_libraries(bin_sensor test_runner)
