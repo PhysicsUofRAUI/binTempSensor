@@ -1,6 +1,11 @@
 #ifndef DHT_U_H
 #define DHT_U_H
 
+void delay(int seconds) {
+  int mysecs = seconds;
+  return;
+}
+
 typedef struct {
   int32_t version;   /**< must be sizeof(struct sensors_event_t) */
   int32_t sensor_id; /**< unique sensor identifier */

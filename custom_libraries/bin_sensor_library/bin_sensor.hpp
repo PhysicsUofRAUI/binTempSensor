@@ -27,19 +27,23 @@ BinSensor::BinSensor(float max_increase)
 float BinSensor::check_sensor(DHT_Unified sensor)
 {
   float new_temp = get_temp(sensor);
+  
   if (new_temp < -80.0)
   {
     return -1.0;
   }
   else if (temp > new_temp)
   {
-    // temperature has not decreased
+    temp = new_temp;
+    // temperature has not increased
     return 0.0;
   }
   else 
   {
+    float old_temp = temp;
+    temp = new_temp;
     // temperature has increased
-    return new_temp - temp;
+    return new_temp - old_temp;
   }
 }
 
@@ -55,7 +59,7 @@ float BinSensor::get_temp(DHT_Unified sensor)
 
   temperature = new_event.temperature;
   
-  while (isnan(temperature) != true && count < 5)
+  while (std::isnan(temperature) == true && count < 5)
   {
     delay(5000);
     sensor.temperature().getEvent(&new_event);
