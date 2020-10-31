@@ -1,52 +1,49 @@
 # Bin Temperature Sensor
-This project was started to build a affordable 'gadjet' to monitor the temperature of grain in a bin. There is some products already available that do this but they cost a 1000 or more dollars, and from what I can tell contain an excessive amount of sensors. The one to be developed here will have a emphasis on being cheap and doing what needs to be done (aka do not buy or use things that are not needed).
+This project is a gadget to monitor the temperature in a grain bin. This is important because when grain heats it can spoil and a farmer can lose lots of money. The current iteration is the cheapest when 4 bins are wired up and costs about $140 per bin. That cost can be contrasted with the current bin monitoring systems which can cost up to $5000 a bin. The next iteration will focus on lowering the per bin cost for when more than 4 bins are wired up, and the iteration after that will integrate Arduino Cloud into the project, so that all collected data can be stored for later use.
 
-# Main Hardware
-## Arduino
-The arduino will be used for simplicity for at least the original version. The arduino is likely the cheapest development board on the market, however there could be others and I'd like you to tell me about them if you find them.
+## Main Hardware
+### Arduino MKR 1400
+This will be the Arduino that will send the alerts to the farmer and possibly one day send data to the Arduino Cloud. At the moment the code is designed to be controlled soley by the MKR 1400, but in the next iteration it will recieve alerts from regular Arduinos.
 
-The one that is being planned to use for the first prototype is the MKRGSM 1400. It will collect the data and send the notifications.
+### Temperature Sensor
+The DHT 22 sensor is currently being used as the sensor. Three of them are needed to monitor one bin.
 
-Later costs could be reduced by putting together the necessary parts to create the device with the least amount of parts necessary.
+### RF Link kits
+The next iteration of the code will have the MKR 1400 recieve alerts from regular Arduinos about the sensors in the regular Arduinos.
 
-## Raspberrypi
-The Raspberrypi will be used for the same reason as arduino. In some planned versions it will be used to collect and display data from the Arduino. This version is currently not being designed. It will also display it on a screen. It could also send a notification to someone. I don't know if this can be replaced with anything, but if anyone has an idea please say :smiley:.
+### Arduino Uno
+This will be used in the second iteration to control the sensors in the bin and send the alerts or data to the MKR 1400. 
 
-## Temperature Sensor
-The only data collection viewed for this system is the temperature sensor to see where the grain is at. It was thought that the best sensor for this would be a infrared sensor (some of that is discussed in more detail in the 'current base idea' pdf). This is because the sensor would not have direct contact with the grain. This may be unnecessary :confused: and some advice on it would certainly be welcome :smiley:.
+## Implementations
+### Current Implementation
+The current iteration is simple, and only uses the MKR 1400 and the DHT 22 sensors. The MKR 1400 requests temperature data from the sensors every 12 hours, and compares it to the previous data. If the temperature has increased the farmer gets sent an alert. 
 
-An option for a sensor that does make direct contact is the DHT 22 sensor that senses both humidity and temperature. It may be interesting to log both the humidity data and the temperature data and do analysis on it to see if the humidity could be used as a early warning.
+#### Cost
+Below I will outline the cost of how much the current implementation would cost for one large bin (about 30ft high) and for four large bins. If your bins are larger or smaller you would either need to buy more or less wire, but it should not change the cost that much. A significant cost not accounted for here is the price of a mobile plan and a sim card for the Arduino MKR 1400. I use a Sasktel card which costs about $60 to activate and then $15 a month for the plan I use. That plan takes up another $180, so it is significant. I also did not include the price of a USB cable or a USB port, but any micro-usb cable will work so it is a minor cost. 
 
-## RF Link kits
-These can be bought from many vendors. They enable communication usually on 433mHz or 350mHz frequencies. This is thought to be a good option for communicating between the various electronics.
+##### One bin
+| Item            | Price of One                                                                                                                  | Number Needed | Total Cost |
+| ------------    |:-----------------------------------------------------------------------------------------------------------------------------:| -------------:| ----------:|
+| MKR 1400        | [$107.85](https://www.digikey.ca/en/products/detail/arduino/ABX00018/8135631)                                                 | 1             | $107.85    |
+| DHT 22          | [$23.08](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/393/5356714?s=N4IgTCBcDaIIIFkAEYDMAGCBdAvkA)       | 3             | $69.24     |
+| Junction Box    | [$18.99](https://www.amazon.ca/gp/product/B075DG55KS/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)                        | 1             | $18.99     |
+| Wire (per foot) | $0.5 (local hardware store)                                                                                                   | 75            | $37.5      |
+| Total           |                                                                                                                               |               | $233.58    |
 
-# Ideas for Implementation
-## GSM Sheild and wired connection to Arduino
-This plan will have three sensors and a GSM sheild directly connected to a Arduino sitting at the top of the bin. One of the sensors will be close to the bottom, another in the middle, and the last one at the top. They will report the temperature and the humidity at periodic intervals. The Arduino will then send a message if the bin starts heating.
+#### Four bins
+| Item            | Price of One | Number Needed | Total Cost |
+| ------------    |:------------:| -------------:| ----------:|
+| MKR 1400        | $107.85      | 1             | $107.85    |
+| DHT 22          | $23.08       | 12            | $276.96    |
+| Junction Box    | $18.99       | 1             | $18.99     |
+| Wire (per foot) | $0.5         | 300           | $150       |
+| Total           |              |               | $553.80    |
 
-This is the model that is currently being made as it is the easiest to make.
+### Second Iteration
+This iteration will improve upon the first iteration by using RF link kits. The RF link kits will link the MKR 1400 to Arduino Unos, and the Arduio Unos will perform the job that the MKR 1400 was doing in the first iteration. This will allow many more bins to be monitored with only one MKR 1400, which is an improvement because the MKR 1400 is the most expensive item.
 
-More information is located in the folder Arduino_GSM.
-
-## RF Link between Raspberry Pi and Arduino with sensor having wired connection to Arduino
-This is largely the same as with the GSM sheild except that the Arduino reports everything to the Raspberry Pi. It is then up to the farmer to look at the data trend or for the Raspberry Pi to alert the farmer in some way (email, GSM, etc). This version could be useful in locations that lack cell service in certain areas but has better in others. The RF link would take the data from a no wifi or cell recption to a place with wifi or cell reception.
-
-Again more information on this one will again be located in its own separate folder. This folder will be called 'RF_RaspberryPi_Arduino'.
-
-## RF Link Between Arduinos
-In this implementation one MKRGSM would collect data from a fleet of Arduino Unos. The MKRGSM would check to see if the data is ok, and if it is not it would send a notification to the farmer.
-
-Some sample code of Arduino RF communication can be found in arduino_rf_communication folder.
-
-This will likely be the next implementation built.
-
-## WiFi and Arduino
-Another option could be using WiFi directly to transmit the data. This might work for some places, but since bin yards are large and located in rural places WiFi may not be availble. It is useful to look into though since it would drive the cost down and increase connection reliability.
-
-Any future work on this will be included in the folder 'Wifi'
-
-# Archive
-This is where I put stuff that is old but might be useful later.
+### Third Iteration ([Arduino Cloud!!!!!](https://www.arduino.cc/en/IoT/HomePage))
+This iteration will integrate the monitors with the Arduino Cloud. All data that is collected from the bin will be sent to the Arduino Cloud, and logged in someway that is accessible to the user (Google Sheets, or perhaps a custom web app).
 
 # Contributing
 Please anyone feel free to contribute. It would especially be appreciated if people with more experience on the hardware related, people involved on farms (like me :smiley:) who have experience to what is really needed to help production and save bushels, and people with experience writing software for this type of hardware.
