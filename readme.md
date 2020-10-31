@@ -22,22 +22,22 @@ The current iteration is simple, and only uses the MKR 1400 and the DHT 22 senso
 Below I will outline the cost of how much the current implementation would cost for one large bin (about 30ft high) and for four large bins. If your bins are larger or smaller you would either need to buy more or less wire, but it should not change the cost that much. A significant cost not accounted for here is the price of a mobile plan and a sim card for the Arduino MKR 1400. I use a Sasktel card which costs about $60 to activate and then $15 a month for the plan I use. That plan takes up another $180, so it is significant. I also did not include the price of a USB cable or a USB port, but any micro-usb cable will work so it is a minor cost. 
 
 ##### One bin
-| Item            | Price of One                                                                                                                  | Number Needed | Total Cost |
-| ------------    |:-----------------------------------------------------------------------------------------------------------------------------:| -------------:| ----------:|
-| MKR 1400        | [$107.85](https://www.digikey.ca/en/products/detail/arduino/ABX00018/8135631)                                                 | 1             | $107.85    |
-| DHT 22          | [$23.08](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/393/5356714?s=N4IgTCBcDaIIIFkAEYDMAGCBdAvkA)       | 3             | $69.24     |
-| Junction Box    | [$18.99](https://www.amazon.ca/gp/product/B075DG55KS/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)                        | 1             | $18.99     |
-| Wire (per foot) | $0.5 (local hardware store)                                                                                                   | 75            | $37.5      |
-| Total           |                                                                                                                               |               | $233.58    |
+| Item            | Price of One                                                                                                            | Number Needed | Total Cost |
+| ------------    |:-----------------------------------------------------------------------------------------------------------------------:| -------------:| ----------:|
+| MKR 1400        | [$107.85](https://www.digikey.ca/en/products/detail/arduino/ABX00018/8135631)                                           | 1             | $107.85    |
+| DHT 22          | [$23.08](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/393/5356714?s=N4IgTCBcDaIIIFkAEYDMAGCBdAvkA) | 3             | $69.24     |
+| Junction Box    | [$18.99](https://www.amazon.ca/gp/product/B075DG55KS/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)                  | 1             | $18.99     |
+| Wire (per foot) | $0.5 (local hardware store)                                                                                             | 75            | $37.5      |
+| Total           |                                                                                                                         |               | $233.58    |
 
 #### Four bins
-| Item            | Price of One | Number Needed | Total Cost |
-| ------------    |:------------:| -------------:| ----------:|
-| MKR 1400        | $107.85      | 1             | $107.85    |
-| DHT 22          | $23.08       | 12            | $276.96    |
-| Junction Box    | $18.99       | 1             | $18.99     |
-| Wire (per foot) | $0.5         | 300           | $150       |
-| Total           |              |               | $553.80    |
+| Item            | Price of One                                                                                                            | Number Needed | Total Cost |
+| ------------    |:-----------------------------------------------------------------------------------------------------------------------:| -------------:| ----------:|
+| MKR 1400        | [$107.85](https://www.digikey.ca/en/products/detail/arduino/ABX00018/8135631)                                           | 1             | $107.85    |
+| DHT 22          | [$23.08](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/393/5356714?s=N4IgTCBcDaIIIFkAEYDMAGCBdAvkA) | 12            | $276.96    |
+| Junction Box    | [$18.99](https://www.amazon.ca/gp/product/B075DG55KS/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)                  | 1             | $18.99     |
+| Wire (per foot) | $0.5 (local hardware store)                                                                                             | 300           | $150       |
+| Total           |                                                                                                                         |               | $553.80    |
 
 ### Second Iteration
 This iteration will improve upon the first iteration by using RF link kits. The RF link kits will link the MKR 1400 to Arduino Unos, and the Arduio Unos will perform the job that the MKR 1400 was doing in the first iteration. This will allow many more bins to be monitored with only one MKR 1400, which is an improvement because the MKR 1400 is the most expensive item.
