@@ -11,7 +11,7 @@ The DHT 22 sensor is currently being used as the sensor. Three of them are neede
 ### RF Link kits
 The next iteration of the code will have the MKR 1400 recieve alerts from regular Arduinos about the sensors in the regular Arduinos.
 
-### Arduino Uno
+### Arduino Mega
 This will be used in the second iteration to control the sensors in the bin and send the alerts or data to the MKR 1400. 
 
 ## Implementations
@@ -40,7 +40,7 @@ Below I will outline the cost of how much the current implementation would cost 
 | Total           |                                                                                                                         |               | $553.80    |
 
 ### Second Iteration
-This iteration will improve upon the first iteration by using RF link kits. The RF link kits will link the MKR 1400 to Arduino Unos, and the Arduio Unos will perform the job that the MKR 1400 was doing in the first iteration. This will allow many more bins to be monitored with only one MKR 1400, which is an improvement because the MKR 1400 is the most expensive item.
+This iteration will improve upon the first iteration by using RF link kits and the Arduino Mega. The Arduino Mega has 54 digital pins so it can control many more bins than the MKR 1400 can, however, it cannot connect to the network. The RF link kit will allow the Mega to communication with the MKR 1400 and the MKR 1400 will be able to communicate with the network and send alerts.
 
 ### Third Iteration ([Arduino Cloud!!!!!](https://www.arduino.cc/en/IoT/HomePage))
 This iteration will integrate the monitors with the Arduino Cloud. All data that is collected from the bin will be sent to the Arduino Cloud, and logged in someway that is accessible to the user (Google Sheets, or perhaps a custom web app).
