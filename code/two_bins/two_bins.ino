@@ -12,9 +12,20 @@ GSM gsmAccess;
 GSM_SMS sms;
 
 // everything to control the sensors
-#define DHTPIN1            1
-#define DHTPIN2            2
-#define DHTPIN3            3
+// bin one
+#define DHTPIN1            0
+#define DHTPIN2            1
+#define DHTPIN3            2
+
+// bin two
+#define DHTPIN4            3
+#define DHTPIN5            4
+#define DHTPIN6            5
+
+// bin three
+#define DHTPIN7            6
+#define DHTPIN8            7
+#define DHTPIN9            8
 
 #define DHTTYPE           DHT22
 
@@ -22,6 +33,11 @@ GSM_SMS sms;
 DHT_Unified dht1(DHTPIN1, DHTTYPE);
 DHT_Unified dht2(DHTPIN2, DHTTYPE);
 DHT_Unified dht3(DHTPIN3, DHTTYPE);
+
+// bin two
+DHT_Unified dht4(DHTPIN4, DHTTYPE);
+DHT_Unified dht5(DHTPIN5, DHTTYPE);
+DHT_Unified dht6(DHTPIN6, DHTTYPE);
 
 
 float result = 0.0;
@@ -31,6 +47,11 @@ float result = 0.0;
 BinSensor bin_sensor1((float)0.5);
 BinSensor bin_sensor2((float)0.5);
 BinSensor bin_sensor3((float)0.5);
+
+// bin two
+BinSensor bin_sensor4((float)0.5);
+BinSensor bin_sensor5((float)0.5);
+BinSensor bin_sensor6((float)0.5);
 
 void setup() {
   // put your setup code here, to run once:
@@ -117,6 +138,58 @@ void loop() {
   {
     sms.beginSMS("your-phone-number");
     sms.print("Bottom of bin one has increased by ");
+    sms.print(result);
+    sms.endSMS();
+  }
+
+
+  /*
+   * Check the sensors in the second bin
+   */
+   result = bin_sensor4.check_sensor(dht4);
+
+  if (result < 0)
+  {
+    sms.beginSMS("your-phone-number");
+    sms.print("Sensor Failure");
+    sms.endSMS();
+  }
+  else if (result > 0)
+  {
+    sms.beginSMS("your-phone-number");
+    sms.print("Top of bin two has increased by ");
+    sms.print(result);
+    sms.endSMS();
+  }
+
+  result = bin_sensor5.check_sensor(dht5);
+
+  if (result < 0)
+  {
+    sms.beginSMS("your-phone-number");
+    sms.print("Sensor Failure");
+    sms.endSMS();
+  }
+  else if (result > 0)
+  {
+    sms.beginSMS("your-phone-number");
+    sms.print("Middle of bin two has increased by ");
+    sms.print(result);
+    sms.endSMS();
+  }
+
+  result = bin_sensor6.check_sensor(dht6);
+
+  if (result < 0)
+  {
+    sms.beginSMS("your-phone-number");
+    sms.print("Sensor Failure");
+    sms.endSMS();
+  }
+  else if (result > 0)
+  {
+    sms.beginSMS("your-phone-number");
+    sms.print("Bottom of bin two has increased by ");
     sms.print(result);
     sms.endSMS();
   }
