@@ -67,7 +67,6 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
   /*
    * Check the sensors in the first bin
