@@ -67,10 +67,9 @@ Before I started attaching the sensors I used a knife to mark the places where t
 1. Program the Arduino MKRGSM with the file test/one_bin_test.ino
 2. Attach the ground to the ground and the power to the 5V.
 3. Attach the bottom cable data pin to pin 1, attach the middle cable data pin to pin 2, and the top to pin 3.
-4. Power the Arduino and let it run for awhile. You should be recieveing the temperature and whether the temperature has increased on one of the sensors each 15 minutes.
-******
-****** Add the photo
-******
+4. Power the Arduino and let it run for awhile. You should be recieveing the temperature and whether the temperature has increased on one of the sensors each 15 minutes.\
+
+![](testing_photo.jpg)
 
 
 ## Step Six: Attach rope to cable with Gorilla Tape
