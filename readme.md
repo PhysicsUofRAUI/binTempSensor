@@ -6,7 +6,7 @@ This project is a gadget to monitor the temperature in a grain bin. This is impo
 This will be the Arduino that will send the alerts to the farmer and possibly one day send data to the Arduino Cloud. At the moment the code is designed to be controlled soley by the MKR 1400, but in the next iteration it will recieve alerts from regular Arduinos.
 
 ### Temperature Sensor
-The DHT 22 sensor is currently being used as the sensor. Three of them are needed to monitor one bin.
+The DHT 22 or the DFR0198 sensor is currently being used as the sensor. Three of them are needed to monitor one bin.
 
 ### RF Link kits
 The next iteration of the code will have the MKR 1400 recieve alerts from regular Arduinos about the sensors in the regular Arduinos.
@@ -16,34 +16,49 @@ This will be used in the second iteration to control the sensors in the bin and 
 
 ## Implementations
 ### Current Implementation
-The current iteration is simple, and only uses the MKR 1400 and the DHT 22 sensors. The MKR 1400 requests temperature data from the sensors every 12 hours, and compares it to the previous data. If the temperature has increased the farmer gets sent an alert. 
+The current iteration is simple, and only uses the MKR 1400 and the DHT 22 sensors or DFR0198 sensors. It will connect to the cloud and will request data every 15 minutes and if the temperature has changed the cloud will be updated. The frequency of readings can be reduced to save on data charges. This iteration is using the code located in code/ArduinoCloud.
 
 #### Cost
-Below I will outline the cost of how much the current implementation would cost for one large bin (about 30ft high) and for four large bins. If your bins are larger or smaller you would either need to buy more or less wire, but it should not change the cost that much. A significant cost not accounted for here is the price of a mobile plan and a sim card for the Arduino MKR 1400. I use a Sasktel card which costs about $60 to activate and then $15 a month for the plan I use. That plan takes up another $180, so it is significant. I also did not include the price of a USB cable or a USB port, but any micro-usb cable will work so it is a minor cost. 
+Below I will outline the cost of how much the current implementation would cost for four large bins (about 30ft high). If your bins are larger or smaller you would either need to buy more or less wire, but it should not change the cost that much. The price of the wire put in is what I have got, but your price will probably be different.
 
-##### One bin
+#### Hardware Costs
+##### With AM2302
 | Item            | Price of One                                                                                                            | Number Needed | Total Cost |
 | ------------    |:-----------------------------------------------------------------------------------------------------------------------:| -------------:| ----------:|
-| MKR 1400        | [$107.85](https://www.digikey.ca/en/products/detail/arduino/ABX00018/8135631)                                           | 1             | $107.85    |
-| DHT 22          | [$23.08](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/393/5356714?s=N4IgTCBcDaIIIFkAEYDMAGCBdAvkA) | 3             | $69.24     |
-| Junction Box    | [$18.99](https://www.amazon.ca/gp/product/B075DG55KS/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)                  | 1             | $18.99     |
-| Wire (per foot) | $0.5 (local hardware store)                                                                                             | 75            | $37.5      |
-| Total           |                                                                                                                         |               | $233.58    |
+| MKR 1400        | [$103.41](https://www.digikey.ca/en/products/detail/arduino/ABX00018/8135631)                                           | 1             | $103.41    |
+| DHT 22          | [$21.81](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/393/5356714?s=N4IgTCBcDaIIIFkAEYDMAGCBdAvkA) | 12            | $261.72    |
+| Junction Box    | [$25.99](https://www.amazon.ca/gp/product/B075DJQJVY/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)                  | 1             | $25.99     |
+| Wire (per foot) | Varies                                                                                                                  | 300           | $95        |
+| Hologram Sim    | [$5.00](https://store.hologram.io/store/)                                                                               | 1             | $5.00      |
+| Total           |                                                                                                                         |               | $491.12    |
 
-#### Four bins
+Note that shipping was not included for any of this.
+
+#### With DFR0198
 | Item            | Price of One                                                                                                            | Number Needed | Total Cost |
 | ------------    |:-----------------------------------------------------------------------------------------------------------------------:| -------------:| ----------:|
-| MKR 1400        | [$107.85](https://www.digikey.ca/en/products/detail/arduino/ABX00018/8135631)                                           | 1             | $107.85    |
-| DHT 22          | [$23.08](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/393/5356714?s=N4IgTCBcDaIIIFkAEYDMAGCBdAvkA) | 12            | $276.96    |
-| Junction Box    | [$18.99](https://www.amazon.ca/gp/product/B075DG55KS/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)                  | 1             | $18.99     |
-| Wire (per foot) | $0.5 (local hardware store)                                                                                             | 300           | $150       |
-| Total           |                                                                                                                         |               | $553.80    |
+| MKR 1400        | [$103.41](https://www.digikey.ca/en/products/detail/arduino/ABX00018/8135631)                                           | 1             | $103.41    |
+| DFR0198         | [$10.03](https://www.digikey.ca/en/products/detail/dfrobot/DFR0198/7597054)                                             | 12            | $120.36    |
+| Junction Box    | [$25.99](https://www.amazon.ca/gp/product/B075DJQJVY/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)                  | 1             | $25.99     |
+| Wire (per foot) | Varies                                                                                                                  | 300           | $95        |
+| Hologram Sim    | [$5.00](https://store.hologram.io/store/)                                                                               | 1             | $5.00      |
+| Total           |                                                                                                                         |               | $349.76    |
 
-### Second Iteration
-This iteration will improve upon the first iteration by using RF link kits and the Arduino Mega. The Arduino Mega has 54 digital pins so it can control many more bins than the MKR 1400 can, however, it cannot connect to the network. The RF link kit will allow the Mega to communication with the MKR 1400 and the MKR 1400 will be able to communicate with the network and send alerts.
+#### Monthly Costs
+| Item            | Price                                                                                                           |
+| --------------------- |:-----------------------------------------------------:|
+| Arduino Cloud Account | [$9.00 CAD](https://store.arduino.cc/digital/create#) | 
+| Hologram Data Costs   | $11.80 CAD                                            |
+| Total                 | $20.8                                                 |
 
-### Third Iteration ([Arduino Cloud!!!!!](https://www.arduino.cc/en/IoT/HomePage))
-This iteration will integrate the monitors with the Arduino Cloud. All data that is collected from the bin will be sent to the Arduino Cloud, and logged in someway that is accessible to the user (Google Sheets, or perhaps a custom web app).
+Note: The data charges will probably be lower since this was calculated on costs when there was no grain in the bin and the temperature varies wildly then.
+
+### Future Improvements
+#### RF Link kits
+The Arduino Mega has 54 digital pins so it can control many more bins than the MKR 1400 can, however, it cannot connect to the network. The RF link kit will allow the Mega to communication with the MKR 1400 and the MKR 1400 will be able to communicate with the network and send alerts.
+
+#### Email Alerts
+This is currently the focus of the work and it will entail the MKR GSM sending data to a third party, possibly IFTTT, which will then send out an email alerting the farmer to a temperature rise. 
 
 # Contributing
 Please anyone feel free to contribute. It would especially be appreciated if people with more experience on the hardware related, people involved on farms (like me :smiley:) who have experience to what is really needed to help production and save bushels, and people with experience writing software for this type of hardware.
