@@ -25,20 +25,32 @@
 #define DHTPIN2            4
 #define DHTPIN3            6
 
+// the sensor inside the box with arduino
+#define DHTPIN4            7
+
 #define DHTTYPE           DHT22
 
 DHT_Unified dht1(DHTPIN1, DHTTYPE);
 DHT_Unified dht2(DHTPIN2, DHTTYPE);
 DHT_Unified dht3(DHTPIN3, DHTTYPE);
+DHT_Unified dht4(DHTPIN4, DHTTYPE);
 
-unsigned long count;
+unsigned long last_time;
 
-int resetPin = 1;
+// previous temperatures
+// Needed so that we can figure out if an alert needs to be
+// sent out or not
+float prev_1;
+float prev_2;
+float prev_3;
+
+char server[] = "maker.ifttt.com";
+
+int count;
+
+GSMSSLClient client;
 
 void setup() {
-  digitalWrite(resetPin, HIGH);
-  pinMode(resetPin, OUTPUT); 
-  
   // Initialize serial and wait for port to open:
   Serial.begin(9600);
   // This delay gives the chance to wait for a Serial Monitor without blocking if none is found
@@ -50,7 +62,7 @@ void setup() {
   // Connect to Arduino IoT Cloud
   ArduinoCloud.begin(ArduinoIoTPreferredConnection);
   
-  ArduinoCloud.addCallback(ArduinoIoTCloudEvent::DISCONNECT, doThisOnDisconnect);
+  ArduinoCloud.addCallback(ArduinoIoTCloudEvent::CONNECT, doThisOnConnect);
   /*
      The following function allows you to obtain more information
      related to the state of network and IoT Cloud connection and errors
@@ -64,61 +76,172 @@ void setup() {
   dht1.begin();
   dht2.begin();
   dht3.begin();
+  dht4.begin();
 
   sensor_t sensor;
   
+  prev_1 = -100;
+  prev_2 = -100;
+  prev_3 = -100;
+  
   count = 0;
+  
+  last_time = millis();
 }
 
 
 void loop() {
-  delay(500);
   ArduinoCloud.update();
   // Your code here 
   
-  if (count < millis()){
+  if (millis() - last_time > 3600000){
     // Get temperature event
-    sensors_event_t event1;
-    dht1.temperature().getEvent(&event1);
+    sensors_event_t event;
+    dht1.temperature().getEvent(&event);
     
-    if (isnan(event1.temperature)) {
+    if (isnan(event.temperature)) {
       temperature1 = -100.0;
     }
     else {
-      temperature1 = event1.temperature;
+      temperature1 = event.temperature;
     }
     
-    // Get temperature event
-    sensors_event_t event2;
-    dht2.temperature().getEvent(&event2);
+    ArduinoCloud.update();
     
-    if (isnan(event2.temperature)) {
+    dht2.temperature().getEvent(&event);
+    
+    if (isnan(event.temperature)) {
       temperature2 = -100.0;
     }
     else {
-      temperature2 = event2.temperature;
+      temperature2 = event.temperature;
     }
     
-    // Get temperature event
-    sensors_event_t event3;
-    dht3.temperature().getEvent(&event3);
+    dht3.temperature().getEvent(&event);
     
-    if (isnan(event3.temperature)) {
+    if (isnan(event.temperature)) {
       temperature3 = -100.0;
     }
     else {
-      temperature3 = event3.temperature;
+      temperature3 = event.temperature;
     }
     
-    count = millis() + 900000;
+    ArduinoCloud.update();
+    
+    // get the inner temp
+    dht4.temperature().getEvent(&event);
+    
+    if (isnan(event.temperature)) {
+      inner_temp = -100.0;
+    }
+    else {
+      inner_temp = event.temperature;
+    }
+    
+    // check if an alert needs to be sent every 24 hours
+    if (count == 24)
+    {
+      ArduinoCloud.update();
+      if (prev_1 == -100)
+      {
+        prev_1 = temperature1;
+        prev_2 = temperature2;
+        prev_3 = temperature3;
+      }
+      else
+      {
+        // Now check if an alert needs to be sent
+        if (temperature1 > prev_1 && temperature1 > inner_temp)
+        {
+          sendEmail("Temperature 1 has increased by " + String(temperature1 - prev_1));
+        }
+        else if (temperature2 > prev_2 && temperature2 > inner_temp)
+        {
+          sendEmail("Temperature 1 has increased by " + String(temperature2 - prev_2));
+        }
+        else if (temperature3 > prev_3 && temperature3 > inner_temp)
+        {
+          sendEmail("Temperature 3 has increased by " + String(temperature3 - prev_3));
+        }
+        
+        // set the previous temperatures
+        prev_1 = temperature1;
+        prev_2 = temperature2;
+        prev_3 = temperature3;
+      }
+      
+      count = 0;
+    }
+    
+    count = count + 1;
+    
+    last_time = millis();
   }
 }
 
-void doThisOnDisconnect(){
-  /* add your custom code here */
-  Serial.println("Board disconnected from Arduino IoT Cloud");
+/*
+  When the device is connected collect data and then send
+  an email saying it has been connected.
+*/
+void doThisOnConnect(){
+  // Get temperature event
+  sensors_event_t event;
+  dht1.temperature().getEvent(&event);
   
-  delay(60000);
+  if (isnan(event.temperature)) {
+    temperature1 = -100.0;
+  }
+  else {
+    temperature1 = event.temperature;
+  }
   
-  digitalWrite(resetPin, LOW);
+  dht2.temperature().getEvent(&event);
+  
+  if (isnan(event.temperature)) {
+    temperature2 = -100.0;
+  }
+  else {
+    temperature2 = event.temperature;
+  }
+  
+  dht3.temperature().getEvent(&event);
+  
+  if (isnan(event.temperature)) {
+    temperature3 = -100.0;
+  }
+  else {
+    temperature3 = event.temperature;
+  }
+  
+  // get the inner temp
+  dht4.temperature().getEvent(&event);
+  
+  if (isnan(event.temperature)) {
+    inner_temp = -100.0;
+  }
+  else {
+    inner_temp = event.temperature;
+  }
+  
+  sendEmail("Your device has been connected! If your grain starts heating an email will be sent here.");
+}
+
+
+void sendEmail(String val) {
+  String data = "{\"value1\":\"" + val + "\"}";
+  
+  // Connection to the IFTTT server
+  if (client.connectSSL(server, 443)) {
+    // Make a HTTP request:
+    client.println("POST /trigger/grain_alert/with/key/f7EiyQeli1KwLPmtkd1r0pLAMO5SJjl6pncQbXPy1IY HTTP/1.1"); // Replace "" by your own IFTTT key
+    client.println("Host: maker.ifttt.com");
+    client.println("Content-Type: application/json");
+    client.print("Content-Length: ");
+    client.println(data.length());
+    client.println();
+    client.print(data);
+  }
+  else {
+    Serial.println("Connection at IFTTT failed");
+  }
 }

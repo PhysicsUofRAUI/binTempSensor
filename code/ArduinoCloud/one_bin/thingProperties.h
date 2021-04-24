@@ -6,15 +6,16 @@
 
 const char THING_ID[]      = "acdff5db-845e-42f4-851d-6b8367a3c258";
 
-const char GPRS_APN[]      = SECRET_APN;
-const char PINNUMBER[]     = SECRET_PIN;
-const char GPRS_LOGIN[]    = SECRET_USERNAME;
-const char GPRS_PASSWORD[] = SECRET_PASSWORD;
+const char GPRS_APN[]      = "hologram";
+const char PINNUMBER[]     = "0000";
+const char GPRS_LOGIN[]    = "blah";
+const char GPRS_PASSWORD[] = "blah";
 
 
 float temperature1;
 float temperature3;
 float temperature2;
+float inner_temp;
 
 void initProperties(){
 
@@ -22,6 +23,7 @@ void initProperties(){
   ArduinoCloud.addProperty(temperature1, READ, ON_CHANGE, NULL);
   ArduinoCloud.addProperty(temperature3, READ, ON_CHANGE, NULL);
   ArduinoCloud.addProperty(temperature2, READ, ON_CHANGE, NULL);
+  ArduinoCloud.addProperty(inner_temp, READ, ON_CHANGE, NULL);
 
 }
 
