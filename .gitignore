@@ -1,3 +1,8 @@
 *.gch
 bin/
 build/
+Gerber/
+*.sch-bak
+fp-info-cache
+*.zip
+*.kicad_pcb-bak
