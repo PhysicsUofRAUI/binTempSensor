@@ -16,7 +16,7 @@ To gauge how long the entire cable needs to be I estimated the height of the top
 ## Step Two: Decide where to place the sensors
 Placing the sensors have to be done with some care. The top sensor should be in the top ring or lower so it is covered by the grain, and the bottom sensor needs to be somewhere around the start of the hopper but can not be at the bottom.
 
-What I did was to place the bottom sensor first and then the space the other two 7ft away from each other. This should give good overall coverage of the bin, and also ensure that each sensor is in the grain. 
+What I did was to place the bottom sensor first and then the space the other two 7ft away from each other. This should give good overall coverage of the bin, and also ensure that each sensor is in the grain.
 
 Below is an outline of how my sensors should line up in the bin.
 
@@ -29,33 +29,24 @@ Before I started attaching the sensors I used a knife to mark the places where t
 
 ## Step Four: Attach the sensors to the main cable
 ### Bottom Sensor
-1. Strip the power (I used the red one) and the ground (I used the black one) just a enough so the sensor can be attached. 
-****
-**** Need photo here
-****
+1. Strip the power (I used the red one) and the ground (I used the black one) just a enough so the sensor can be attached.
 
 2. Now strip one of the other three wires to be used for the data pin. (Note which one you use so that you know which wire is the bottom sensor)
 3. Solder the black wire of the sensor to the ground.
 
 ![](black_wires_attached_with_solder.jpg)
 
-4. Solder the red wire and the resistor to the power wire. 
-******
-****** Add the photo
-******
+4. Solder the red wire.
 
 5. Solder the yellow wire (data wire) to the wire you selected for the bottom's data. Also solder the other end of the resistor to the wire selected for the data.
-![](data_red_and_resistor_soldered.jpg)
 
 6. Tape the red wire and the data wire together first (best you can, just to make sure the ground doesn't touch any of them)
-7. Tape all the wires together up to the sensor
-******
-****** Add the photo
-******
+
+![](first_sensor_am2302.jpg)
 
 ### Top and Middle Sensor
 1. Cut away some the insulation around all five wires so that the individual wires are exposed.
-2. Cut away some of the insulation on the power and ground so that the bare wire is exposed. 
+2. Cut away some of the insulation on the power and ground so that the bare wire is exposed.
 3. Snip the data next data wire (each data wire must be different)
 4. Now follow the bottom sensor instructions starting at step 3. It will look slightly different so I have included so additional photos.
 
@@ -73,10 +64,10 @@ Before I started attaching the sensors I used a knife to mark the places where t
 
 
 ## Step Six: Attach rope to cable with Gorilla Tape
-If everything went well with the test it is time to finish the cable. I attached a hefty rope to the wire with gorilla tape so that there is slightly more structure. Veiw the photo below.
-******
-****** Add the photo
-******
+If everything went well with the test it is time to finish the cable. Initially I got a hefty rope and attached it to the wire with gorilla tape, but now I decided to use heat shrink to finish the job. I have included some photos of heat shrink being put on.
+
+![](heat_shrink.jpg)
 
 
 # Conclusion
+That concludes the instructions on how to build the AM2302 version of the temperature cable. At the moment it sounds like I will probably be moving to use the DS18B20 version of the cable since it is easier to assemble and allows for more sensors to be added easily.
