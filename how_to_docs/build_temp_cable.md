@@ -20,12 +20,12 @@ What I did was to place the bottom sensor first and then the space the other two
 
 Below is an outline of how my sensors should line up in the bin.
 
-![](outline_sensor_locations.jpg)
+<img src="outline_sensor_locations.jpg" alt="drawing" width="400"/>
 
 ## Step Three: Mark where the sensors go on the main cable
 Before I started attaching the sensors I used a knife to mark the places where the sensors are to go. A photo can be seen below.
 
-![](mark_on_cable.jpg)
+<img src="mark_on_cable.jpg" alt="drawing" width="400"/>
 
 ## Step Four: Attach the sensors to the main cable
 ### Bottom Sensor
@@ -34,7 +34,7 @@ Before I started attaching the sensors I used a knife to mark the places where t
 2. Now strip one of the other three wires to be used for the data pin. (Note which one you use so that you know which wire is the bottom sensor)
 3. Solder the black wire of the sensor to the ground.
 
-![](black_wires_attached_with_solder.jpg)
+<img src="black_wires_attached_with_solder.jpg" alt="drawing" width="400"/>
 
 4. Solder the red wire.
 
@@ -42,7 +42,7 @@ Before I started attaching the sensors I used a knife to mark the places where t
 
 6. Tape the red wire and the data wire together first (best you can, just to make sure the ground doesn't touch any of them)
 
-![](first_sensor_am2302.jpg)
+<img src="first_sensor_am2302.jpg" alt="drawing" width="400"/>
 
 ### Top and Middle Sensor
 1. Cut away some the insulation around all five wires so that the individual wires are exposed.
@@ -50,9 +50,9 @@ Before I started attaching the sensors I used a knife to mark the places where t
 3. Snip the data next data wire (each data wire must be different)
 4. Now follow the bottom sensor instructions starting at step 3. It will look slightly different so I have included so additional photos.
 
-![](middle_sensors_1.jpg)
+<img src="middle_sensors_1.jpg" alt="drawing" width="400"/>
 
-![](middle_sensors_2.jpg)
+<img src="middle_sensors_2.jpg" alt="drawing" width="400"/>
 
 ## Step Five: Test the cable
 1. Program the Arduino MKRGSM with the file test/one_bin_test.ino
@@ -60,13 +60,13 @@ Before I started attaching the sensors I used a knife to mark the places where t
 3. Attach the bottom cable data pin to pin 1, attach the middle cable data pin to pin 2, and the top to pin 3.
 4. Power the Arduino and let it run for awhile. You should be recieveing the temperature and whether the temperature has increased on one of the sensors each 15 minutes.\
 
-![](testing_photo.jpg)
+<img src="testing_photo.jpg" alt="drawing" width="400"/>
 
 
-## Step Six: Attach rope to cable with Gorilla Tape
+## Step Six: Complete the cable
 If everything went well with the test it is time to finish the cable. Initially I got a hefty rope and attached it to the wire with gorilla tape, but now I decided to use heat shrink to finish the job. I have included some photos of heat shrink being put on.
 
-![](heat_shrink.jpg)
+<img src="heat_shrink.jpg" alt="drawing" width="400"/>
 
 
 # Conclusion
