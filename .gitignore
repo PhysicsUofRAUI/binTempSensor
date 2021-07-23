@@ -6,3 +6,4 @@ Gerber/
 fp-info-cache
 *.zip
 *.kicad_pcb-bak
+*.pdf
