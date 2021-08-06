@@ -19,12 +19,12 @@ What I did was to place the bottom sensor first and then the space the other two
 
 Below is an outline of how my sensors should line up in the bin.
 
-<img src="outline_sensor_locations.jpg" alt="drawing" width="400"/>
+<img src="outline_sensor_locations.jpg" alt="drawing" width="200"/>
 
 ## Step Three: Mark where the sensors go on the main cable
 Before I started attaching the sensors I used a knife to mark the places where the sensors are to go. A photo can be seen below.
 
-<img src="mark_on_cable.jpg" alt="drawing" width="400"/>
+<img src="mark_on_cable.jpg" alt="drawing" width="200"/>
 
 When doing longer cables I would attach a sensor and then mark the next one just because it was getting to become cumbersome to deal with all the wire that was strewn around the shop.
 
@@ -32,7 +32,15 @@ When doing longer cables I would attach a sensor and then mark the next one just
 Before placing all the sensors on the cable it is advisable to slide three pieces of heat shrink (about 6 inches in length) onto the cable to be used later to cover up all the connections made while attaching the sensors.
 
 ### Bottom Sensor
-1. Strip the power (I used the red one) and the ground (I used the black one) just a enough so the sensor can be attached.
+1. Strip the power (I used the red one) and the ground (I used the black one) just a enough so the sensor can be attached. To see the what the different colours of the DS18B20 sensors are I would go to the datasheet from that particular manufacturer. In the case of version linked above a table is provided below:
+
+| Colour | Purpose |
+| ------ | ------- |
+| Blue   | Ground  |
+| Yellow | Data    |
+| Red    | Power   |
+
+The only other colour I have seen is black for ground instead of blue.
 
 2. Now strip the wire that will be used as the data pin.
 
@@ -46,9 +54,10 @@ Before placing all the sensors on the cable it is advisable to slide three piece
   - Note: for this one heat shrink could be used, but for the following it could not
 
 7. Apply the first heat shrink around the electrical connections. Do not heat the heat shrink until after the cable is tested in case something is wrong.
-- add photo of heat shrink being applied
-<img src="ds18b20_sensor.jpg" alt="drawing" width="400"/>
-- add photo of sensor attached
+
+<img src="ds18b20_sensor.jpg" alt="drawing" width="200"/>
+
+A photo of a DS18B20 sensor attached to the cable will be added later.
 
 ### Middle and Top Sensor
 1. Measure the decided amount of feet separating each sensor and mark the location.
@@ -57,17 +66,17 @@ Before placing all the sensors on the cable it is advisable to slide three piece
 
 Cable shown stripped in the middle.
 
-<img src="middle_sensor_stripped.jpg" alt="drawing" width="400"/>
+<img src="middle_sensor_stripped.jpg" alt="drawing" width="200"/>
 
 The sensor soldered and attached in the middle.
 
-<img src="ds18b20_middle_solder.jpg" alt="drawing" width="400"/>
+<img src="ds18b20_middle_solder.jpg" alt="drawing" width="200"/>
 
 The sensor tapped in the middle.
 
-<img src="ds18b20_tapped.jpg" alt="drawing" width="400"/>
+<img src="ds18b20_tapped.jpg" alt="drawing" width="200"/>
 
-- add one with the heat shrink
+<img src="heat_shrink_covering_connections.jpg" alt="drawing" width="200"/>
 
 ## Step 5: Test the Cable
 No testing regime as of yet, but it will come.
