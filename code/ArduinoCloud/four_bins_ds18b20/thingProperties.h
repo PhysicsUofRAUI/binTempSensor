@@ -4,12 +4,10 @@
 #include <Arduino_ConnectionHandler.h>
 
 
-const char THING_ID[]      = "952e3ad9-ef0f-46b0-aa63-a71ab33f7a11";
+const char THING_ID[]      = "";
 
-const char GPRS_APN[]      = "";
-const char PINNUMBER[]     = "";
-const char GPRS_LOGIN[]    = "";
-const char GPRS_PASSWORD[] = "";
+const char SSID[]     = "";    // Network SSID (name)
+const char PASS[]     = "";    // Network password (use for WPA, or use as key for WEP)
 
 
 float one_top;
@@ -45,4 +43,4 @@ void initProperties(){
 
 }
 
-GSMConnectionHandler ArduinoIoTPreferredConnection(PINNUMBER, GPRS_APN, GPRS_LOGIN, GPRS_PASSWORD);
+WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);

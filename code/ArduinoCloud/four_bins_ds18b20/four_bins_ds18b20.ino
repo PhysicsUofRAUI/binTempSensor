@@ -62,9 +62,9 @@ OneWire binThreeOneWire(BIN_THREE_ONE_WIRE_BUS);
 
 DallasTemperature binThreeSensors(&binThreeOneWire);
 
-DeviceAddress three_top_address = {};
-DeviceAddress three_middle_address = {};
-DeviceAddress three_bottom_address = {};
+DeviceAddress three_top_address = { 0x28, 0xC2, 0x21, 0x0A, 0x0D, 0x00, 0x00, 0xDF};
+DeviceAddress three_middle_address = { 0x28, 0xEE, 0x6A, 0x0A, 0x0D, 0x00, 0x00, 0x83};
+DeviceAddress three_bottom_address = { 0x28, 0x2C, 0xAA, 0x0B, 0x0D, 0x00, 0x00, 0xDF};
 
 // Bin Four
 OneWire binFourOneWire(BIN_FOUR_ONE_WIRE_BUS);
@@ -82,22 +82,6 @@ void setup() {
   Serial.begin(9600);
   // This delay gives the chance to wait for a Serial Monitor without blocking if none is found
   delay(1500);
-
-  // Defined in thingProperties.h
-  initProperties();
-
-  // Connect to Arduino IoT Cloud
-  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
-
-  /*
-     The following function allows you to obtain more information
-     related to the state of network and IoT Cloud connection and errors
-     the higher number the more granular information you’ll get.
-     The default is 0 (only errors).
-     Maximum is 4
- */
-  setDebugMessageLevel(4);
-  ArduinoCloud.printDebugInfo();
   
   // get the onboard sensor ready
   dht.begin();
@@ -114,14 +98,14 @@ void setup() {
     Serial.println("Unable to find address for Device 0");
   }
 
-  delay(1500);
+  delay(500);
 
   if (!binOneSensors.getAddress(one_middle_address, 1))
   {
     Serial.println("Unable to find address for Device 1");
   }
 
-  delay(1500);
+  delay(500);
 
   if (!binOneSensors.getAddress(one_bottom_address, 2))
   {
@@ -129,9 +113,9 @@ void setup() {
   }
 
   binOneSensors.setResolution(one_top_address, TEMPERATURE_PRECISION);
-  delay(1500);
+  delay(500);
   binOneSensors.setResolution(one_middle_address, TEMPERATURE_PRECISION);
-  delay(1500);
+  delay(500);
   binOneSensors.setResolution(one_bottom_address, TEMPERATURE_PRECISION);
 
   /*
@@ -144,14 +128,14 @@ void setup() {
     Serial.println("Unable to find address for Device 0");
   }
 
-  delay(1500);
+  delay(500);
 
   if (!binTwoSensors.getAddress(two_middle_address, 1))
   {
     Serial.println("Unable to find address for Device 1");
   }
 
-  delay(1500);
+  delay(500);
 
   if (!binTwoSensors.getAddress(two_bottom_address, 2))
   {
@@ -159,9 +143,9 @@ void setup() {
   }
 
   binTwoSensors.setResolution(two_top_address, TEMPERATURE_PRECISION);
-  delay(1500);
+  delay(500);
   binTwoSensors.setResolution(two_middle_address, TEMPERATURE_PRECISION);
-  delay(1500);
+  delay(500);
   binTwoSensors.setResolution(two_bottom_address, TEMPERATURE_PRECISION);
   
   /*
@@ -174,14 +158,14 @@ void setup() {
     Serial.println("Unable to find address for Device 0");
   }
 
-  delay(1500);
+  delay(500);
 
   if (!binThreeSensors.getAddress(three_middle_address, 1))
   {
     Serial.println("Unable to find address for Device 1");
   }
 
-  delay(1500);
+  delay(500);
 
   if (!binThreeSensors.getAddress(three_bottom_address, 2))
   {
@@ -189,9 +173,9 @@ void setup() {
   }
 
   binThreeSensors.setResolution(three_top_address, TEMPERATURE_PRECISION);
-  delay(1500);
+  delay(500);
   binThreeSensors.setResolution(three_middle_address, TEMPERATURE_PRECISION);
-  delay(1500);
+  delay(500);
   binThreeSensors.setResolution(three_bottom_address, TEMPERATURE_PRECISION);
   
   /*
@@ -204,14 +188,14 @@ void setup() {
     Serial.println("Unable to find address for Device 0");
   }
 
-  delay(1500);
+  delay(500);
 
   if (!binFourSensors.getAddress(four_middle_address, 1))
   {
     Serial.println("Unable to find address for Device 1");
   }
 
-  delay(1500);
+  delay(500);
 
   if (!binFourSensors.getAddress(four_bottom_address, 2))
   {
@@ -219,10 +203,26 @@ void setup() {
   }
 
   binFourSensors.setResolution(four_top_address, TEMPERATURE_PRECISION);
-  delay(1500);
+  delay(500);
   binFourSensors.setResolution(four_middle_address, TEMPERATURE_PRECISION);
-  delay(1500);
+  delay(500);
   binFourSensors.setResolution(four_bottom_address, TEMPERATURE_PRECISION);
+
+  // Defined in thingProperties.h
+  initProperties();
+
+  // Connect to Arduino IoT Cloud
+  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
+
+  /*
+     The following function allows you to obtain more information
+     related to the state of network and IoT Cloud connection and errors
+     the higher number the more granular information you’ll get.
+     The default is 0 (only errors).
+     Maximum is 4
+ */
+  setDebugMessageLevel(4);
+  ArduinoCloud.printDebugInfo();
 
   last_time = millis();
 }
