@@ -16,18 +16,18 @@ $EndDescr
 Text Notes 5200 2225 0    50   ~ 0
 Arduino MKR 1400
 $Comp
-L power:+VDC #PWR0102
+L ecad-rescue:+VDC-power #PWR0102
 U 1 1 60A8C83E
-P 6700 2650
-F 0 "#PWR0102" H 6700 2550 50  0001 C CNN
-F 1 "+VDC" V 6700 2880 50  0000 L CNN
-F 2 "" H 6700 2650 50  0001 C CNN
-F 3 "" H 6700 2650 50  0001 C CNN
-	1    6700 2650
+P 6700 2850
+F 0 "#PWR0102" H 6700 2750 50  0001 C CNN
+F 1 "+VDC" V 6700 3080 50  0000 L CNN
+F 2 "" H 6700 2850 50  0001 C CNN
+F 3 "" H 6700 2850 50  0001 C CNN
+	1    6700 2850
 	0    1    1    0   
 $EndComp
 $Comp
-L power:-VDC #PWR0110
+L ecad-rescue:-VDC-power #PWR0110
 U 1 1 60A90684
 P 6700 2950
 F 0 "#PWR0110" H 6700 2850 50  0001 C CNN
@@ -38,7 +38,7 @@ F 3 "" H 6700 2950 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Connector:Conn_01x03_Female J6
+L ecad-rescue:Conn_01x03_Female-Connector J6
 U 1 1 60A99987
 P 1850 4025
 F 0 "J6" H 1878 4051 50  0000 L CNN
@@ -49,7 +49,7 @@ F 3 "~" H 1850 4025 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector:Conn_01x03_Female J5
+L ecad-rescue:Conn_01x03_Female-Connector J5
 U 1 1 60A9AE52
 P 1850 4425
 F 0 "J5" H 1878 4451 50  0000 L CNN
@@ -60,7 +60,7 @@ F 3 "~" H 1850 4425 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector:Conn_01x03_Female J4
+L ecad-rescue:Conn_01x03_Female-Connector J4
 U 1 1 60A9B632
 P 1850 4775
 F 0 "J4" H 1878 4801 50  0000 L CNN
@@ -71,7 +71,7 @@ F 3 "~" H 1850 4775 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector:Conn_01x03_Female J1
+L ecad-rescue:Conn_01x03_Female-Connector J1
 U 1 1 60A9BC86
 P 1525 3375
 F 0 "J1" H 1417 3050 50  0000 C CNN
@@ -82,7 +82,7 @@ F 3 "~" H 1525 3375 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:+VDC #PWR0111
+L ecad-rescue:+VDC-power #PWR0111
 U 1 1 60A9C88A
 P 2050 4875
 F 0 "#PWR0111" H 2050 4775 50  0001 C CNN
@@ -93,7 +93,7 @@ F 3 "" H 2050 4875 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+VDC #PWR0112
+L ecad-rescue:+VDC-power #PWR0112
 U 1 1 60A9CDFE
 P 2050 4525
 F 0 "#PWR0112" H 2050 4425 50  0001 C CNN
@@ -104,7 +104,7 @@ F 3 "" H 2050 4525 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+VDC #PWR0113
+L ecad-rescue:+VDC-power #PWR0113
 U 1 1 60A9D77B
 P 2050 4125
 F 0 "#PWR0113" H 2050 4025 50  0001 C CNN
@@ -115,7 +115,7 @@ F 3 "" H 2050 4125 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+VDC #PWR0114
+L ecad-rescue:+VDC-power #PWR0114
 U 1 1 60A9DE4F
 P 1725 3475
 F 0 "#PWR0114" H 1725 3375 50  0001 C CNN
@@ -126,7 +126,7 @@ F 3 "" H 1725 3475 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:-VDC #PWR0115
+L ecad-rescue:-VDC-power #PWR0115
 U 1 1 60A9EA52
 P 2050 4025
 F 0 "#PWR0115" H 2050 3925 50  0001 C CNN
@@ -137,7 +137,7 @@ F 3 "" H 2050 4025 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:-VDC #PWR0116
+L ecad-rescue:-VDC-power #PWR0116
 U 1 1 60A9F122
 P 2050 4425
 F 0 "#PWR0116" H 2050 4325 50  0001 C CNN
@@ -148,7 +148,7 @@ F 3 "" H 2050 4425 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:-VDC #PWR0117
+L ecad-rescue:-VDC-power #PWR0117
 U 1 1 60A9F7F5
 P 2050 4775
 F 0 "#PWR0117" H 2050 4675 50  0001 C CNN
@@ -159,7 +159,7 @@ F 3 "" H 2050 4775 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:-VDC #PWR0118
+L ecad-rescue:-VDC-power #PWR0118
 U 1 1 60A9FE62
 P 1725 3375
 F 0 "#PWR0118" H 1725 3275 50  0001 C CNN
@@ -178,7 +178,7 @@ Wire Wire Line
 Wire Wire Line
 	2050 4675 3050 4675
 $Comp
-L Device:R R12
+L ecad-rescue:R-Device R12
 U 1 1 60ACB0F8
 P 2525 3775
 F 0 "R12" H 2595 3821 50  0000 L CNN
@@ -189,7 +189,7 @@ F 3 "~" H 2525 3775 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:R R10
+L ecad-rescue:R-Device R10
 U 1 1 60ACC577
 P 2750 4175
 F 0 "R10" H 2820 4221 50  0000 L CNN
@@ -200,7 +200,7 @@ F 3 "~" H 2750 4175 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:R R8
+L ecad-rescue:R-Device R8
 U 1 1 60ACCC23
 P 3050 4525
 F 0 "R8" H 3120 4571 50  0000 L CNN
@@ -211,7 +211,7 @@ F 3 "~" H 3050 4525 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:R R1
+L ecad-rescue:R-Device R1
 U 1 1 60ACE3A2
 P 2250 3125
 F 0 "R1" H 2320 3171 50  0000 L CNN
@@ -222,7 +222,7 @@ F 3 "~" H 2250 3125 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+VDC #PWR0119
+L ecad-rescue:+VDC-power #PWR0119
 U 1 1 60ACF716
 P 2250 2975
 F 0 "#PWR0119" H 2250 2875 50  0001 C CNN
@@ -233,7 +233,7 @@ F 3 "" H 2250 2975 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+VDC #PWR0120
+L ecad-rescue:+VDC-power #PWR0120
 U 1 1 60ACFFF3
 P 3050 4375
 F 0 "#PWR0120" H 3050 4275 50  0001 C CNN
@@ -244,7 +244,7 @@ F 3 "" H 3050 4375 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+VDC #PWR0121
+L ecad-rescue:+VDC-power #PWR0121
 U 1 1 60AD34D1
 P 2750 4025
 F 0 "#PWR0121" H 2750 3925 50  0001 C CNN
@@ -255,7 +255,7 @@ F 3 "" H 2750 4025 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+VDC #PWR0122
+L ecad-rescue:+VDC-power #PWR0122
 U 1 1 60AD3D4F
 P 2525 3625
 F 0 "#PWR0122" H 2525 3525 50  0001 C CNN
@@ -271,18 +271,18 @@ NoConn ~ 4300 2850
 NoConn ~ 4300 2950
 NoConn ~ 4300 3050
 $Comp
-L power:PWR_FLAG #FLG0102
+L ecad-rescue:PWR_FLAG-power #FLG0102
 U 1 1 60B51A82
-P 6700 2650
-F 0 "#FLG0102" H 6700 2725 50  0001 C CNN
-F 1 "PWR_FLAG" H 6700 2823 50  0000 C CNN
-F 2 "" H 6700 2650 50  0001 C CNN
-F 3 "~" H 6700 2650 50  0001 C CNN
-	1    6700 2650
+P 6700 2850
+F 0 "#FLG0102" H 6700 2925 50  0001 C CNN
+F 1 "PWR_FLAG" H 6700 3023 50  0000 C CNN
+F 2 "" H 6700 2850 50  0001 C CNN
+F 3 "~" H 6700 2850 50  0001 C CNN
+	1    6700 2850
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG0101
+L ecad-rescue:PWR_FLAG-power #FLG0101
 U 1 1 60B580F0
 P 6700 2950
 F 0 "#FLG0101" H 6700 3025 50  0001 C CNN
@@ -293,7 +293,7 @@ F 3 "~" H 6700 2950 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Sensor:DHT11 U1
+L ecad-rescue:DHT11-Sensor U1
 U 1 1 60B5D90B
 P 3900 1875
 F 0 "U1" H 3656 1921 50  0000 R CNN
@@ -304,7 +304,7 @@ F 3 "http://akizukidenshi.com/download/ds/aosong/DHT11.pdf" H 4050 2125 50  0001
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+VDC #PWR01
+L ecad-rescue:+VDC-power #PWR01
 U 1 1 60B62AE8
 P 3900 1575
 F 0 "#PWR01" H 3900 1475 50  0001 C CNN
@@ -315,7 +315,7 @@ F 3 "" H 3900 1575 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:-VDC #PWR02
+L ecad-rescue:-VDC-power #PWR02
 U 1 1 60B6473C
 P 3900 2175
 F 0 "#PWR02" H 3900 2075 50  0001 C CNN
@@ -332,7 +332,7 @@ Wire Wire Line
 Wire Wire Line
 	4350 2300 4175 2300
 $Comp
-L Device:R R17
+L ecad-rescue:R-Device R17
 U 1 1 60B733B1
 P 4350 1725
 F 0 "R17" H 4420 1771 50  0000 L CNN
@@ -344,7 +344,7 @@ F 3 "~" H 4350 1725 50  0001 C CNN
 $EndComp
 Connection ~ 4350 1875
 $Comp
-L power:+VDC #PWR03
+L ecad-rescue:+VDC-power #PWR03
 U 1 1 60B74477
 P 4350 1575
 F 0 "#PWR03" H 4350 1475 50  0001 C CNN
@@ -387,8 +387,6 @@ Wire Notes Line
 	4650 1125 3225 1125
 Text Notes 3450 1125 0    50   ~ 0
 On Board DHT 22 Sensor
-Connection ~ 6700 2650
-NoConn ~ 6700 2850
 Wire Wire Line
 	4175 3450 4300 3450
 Wire Wire Line
@@ -439,4 +437,6 @@ NoConn ~ 6700 3650
 NoConn ~ 6700 3750
 NoConn ~ 6700 3850
 NoConn ~ 6700 3950
+Connection ~ 6700 2850
+NoConn ~ 6700 2650
 $EndSCHEMATC
