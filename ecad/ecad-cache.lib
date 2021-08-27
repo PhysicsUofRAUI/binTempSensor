@@ -44,11 +44,42 @@ X PA22_TC4-W0/0 9 -1200 -200 200 R 40 40 0 0 B
 ENDDRAW
 ENDDEF
 #
-# Connector_Conn_01x03_Female
+# ecad-rescue_+VDC-power
 #
-DEF Connector_Conn_01x03_Female J 0 40 Y N 1 F N
+DEF ecad-rescue_+VDC-power #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -100 50 H I C CNN
+F1 "ecad-rescue_+VDC-power" 0 250 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 125 75 0 1 10 N
+P 2 0 1 20 -45 125 45 125 N
+P 2 0 1 0 0 0 0 50 N
+P 2 0 1 20 0 80 0 170 N
+X +VDC 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# ecad-rescue_-VDC-power
+#
+DEF ecad-rescue_-VDC-power #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -100 50 H I C CNN
+F1 "ecad-rescue_-VDC-power" 0 250 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 125 75 0 1 10 N
+P 2 0 1 20 -45 125 45 125 N
+P 2 0 1 0 0 0 0 50 N
+X -VDC 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# ecad-rescue_Conn_01x03_Female-Connector
+#
+DEF ecad-rescue_Conn_01x03_Female-Connector J 0 40 Y N 1 F N
 F0 "J" 0 200 50 H V C CNN
-F1 "Connector_Conn_01x03_Female" 0 -200 50 H V C CNN
+F1 "ecad-rescue_Conn_01x03_Female-Connector" 0 -200 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -67,31 +98,13 @@ X Pin_3 3 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device_R
+# ecad-rescue_DHT11-Sensor
 #
-DEF Device_R R 0 0 N Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "Device_R" 0 0 50 V V C CNN
-F2 "" -70 0 50 V I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- R_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# Sensor_DHT11
-#
-DEF Sensor_DHT11 U 0 20 Y Y 1 F N
+DEF ecad-rescue_DHT11-Sensor U 0 20 Y Y 1 F N
 F0 "U" -150 250 50 H V C CNN
-F1 "Sensor_DHT11" 150 250 50 H V C CNN
+F1 "ecad-rescue_DHT11-Sensor" 150 250 50 H V C CNN
 F2 "Sensor:Aosong_DHT11_5.5x12.0_P2.54mm" 0 -400 50 H I C CNN
 F3 "" 150 250 50 H I C CNN
-ALIAS CHT11
 $FPLIST
  Aosong*DHT11*5.5x12.0*P2.54mm*
 $ENDFPLIST
@@ -104,47 +117,33 @@ X GND 4 0 -300 100 U 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
-# power_+VDC
+# ecad-rescue_PWR_FLAG-power
 #
-DEF power_+VDC #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -100 50 H I C CNN
-F1 "power_+VDC" 0 250 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-C 0 125 75 0 1 10 N
-P 2 0 1 20 -45 125 45 125 N
-P 2 0 1 0 0 0 0 50 N
-P 2 0 1 20 0 80 0 170 N
-X +VDC 1 0 0 0 U 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# power_-VDC
-#
-DEF power_-VDC #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -100 50 H I C CNN
-F1 "power_-VDC" 0 250 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-C 0 125 75 0 1 10 N
-P 2 0 1 20 -45 125 45 125 N
-P 2 0 1 0 0 0 0 50 N
-X -VDC 1 0 0 0 U 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# power_PWR_FLAG
-#
-DEF power_PWR_FLAG #FLG 0 0 N N 1 F P
+DEF ecad-rescue_PWR_FLAG-power #FLG 0 0 N N 1 F P
 F0 "#FLG" 0 75 50 H I C CNN
-F1 "power_PWR_FLAG" 0 150 50 H V C CNN
+F1 "ecad-rescue_PWR_FLAG-power" 0 150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
 P 6 0 1 0 0 0 0 50 -40 75 0 100 40 75 0 50 N
 X pwr 1 0 0 0 U 50 50 0 0 w
+ENDDRAW
+ENDDEF
+#
+# ecad-rescue_R-Device
+#
+DEF ecad-rescue_R-Device R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "ecad-rescue_R-Device" 0 0 50 V V C CNN
+F2 "" -70 0 50 V I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ R_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
