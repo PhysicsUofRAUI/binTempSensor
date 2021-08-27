@@ -7,3 +7,6 @@ fp-info-cache
 *.zip
 *.kicad_pcb-bak
 *.pdf
+*.lib
+*.dcm
+sym-lib-table
