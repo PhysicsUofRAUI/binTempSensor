@@ -93,28 +93,6 @@ void setup() {
   */
   binOneSensors.begin();
 
-  if (!binOneSensors.getAddress(one_top_address, 0))
-  {
-    one_top = -100;
-    Serial.println("Unable to find address for Device 0");
-  }
-
-  delay(500);
-
-  if (!binOneSensors.getAddress(one_middle_address, 1))
-  {
-    one_middle = -100;
-    Serial.println("Unable to find address for Device 1");
-  }
-
-  delay(500);
-
-  if (!binOneSensors.getAddress(one_bottom_address, 2))
-  {
-    one_bottom = -100;
-    Serial.println("Unable to find address for Device 2");
-  }
-
   binOneSensors.setResolution(one_top_address, TEMPERATURE_PRECISION);
   delay(500);
   binOneSensors.setResolution(one_middle_address, TEMPERATURE_PRECISION);
@@ -125,28 +103,6 @@ void setup() {
     Getting Bin Two's Sensors Ready
   */
   binTwoSensors.begin();
-
-  if (!binTwoSensors.getAddress(two_top_address, 0))
-  {
-    two_top = -100;
-    Serial.println("Unable to find address for Device 0");
-  }
-
-  delay(500);
-
-  if (!binTwoSensors.getAddress(two_middle_address, 1))
-  {
-    two_middle = -100;
-    Serial.println("Unable to find address for Device 1");
-  }
-
-  delay(500);
-
-  if (!binTwoSensors.getAddress(two_bottom_address, 2))
-  {
-    two_bottom = -100;
-    Serial.println("Unable to find address for Device 2");
-  }
 
   binTwoSensors.setResolution(two_top_address, TEMPERATURE_PRECISION);
   delay(500);
@@ -159,28 +115,6 @@ void setup() {
   */
   binThreeSensors.begin();
 
-  if (!binThreeSensors.getAddress(three_top_address, 0))
-  {
-    three_top = -100;
-    Serial.println("Unable to find address for Device 0");
-  }
-
-  delay(500);
-
-  if (!binThreeSensors.getAddress(three_middle_address, 1))
-  {
-    three_middle = -100;
-    Serial.println("Unable to find address for Device 1");
-  }
-
-  delay(500);
-
-  if (!binThreeSensors.getAddress(three_bottom_address, 2))
-  {
-    three_bottom = -100;
-    Serial.println("Unable to find address for Device 2");
-  }
-
   binThreeSensors.setResolution(three_top_address, TEMPERATURE_PRECISION);
   delay(500);
   binThreeSensors.setResolution(three_middle_address, TEMPERATURE_PRECISION);
@@ -191,28 +125,6 @@ void setup() {
     Getting Bin Four's Sensors Ready
   */
   binFourSensors.begin();
-
-  if (!binFourSensors.getAddress(four_top_address, 0))
-  {
-    four_top = -100;
-    Serial.println("Unable to find address for Device 0");
-  }
-
-  delay(500);
-
-  if (!binFourSensors.getAddress(four_middle_address, 1))
-  {
-    four_middle = -100;
-    Serial.println("Unable to find address for Device 1");
-  }
-
-  delay(500);
-
-  if (!binFourSensors.getAddress(four_bottom_address, 2))
-  {
-    four_bottom = -100;
-    Serial.println("Unable to find address for Device 2");
-  }
 
   binFourSensors.setResolution(four_top_address, TEMPERATURE_PRECISION);
   delay(500);
