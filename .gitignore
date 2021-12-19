@@ -10,3 +10,4 @@ fp-info-cache
 *.lib
 *.dcm
 sym-lib-table
+gerber_dk_nsym/
