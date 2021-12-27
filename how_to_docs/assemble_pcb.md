@@ -66,7 +66,7 @@ Extra info about the DHT22 sensor: https://learn.adafruit.com/dht
 ## 3.5 Cut Away Stray wires
 The last step is to cut away the stray wires that are at the bottom of the board. I would cut the stray wires from the resistors, and trim the wires coming from the DHT 22.
 
-<img src="photos/stray_wires_shown.jpg" alt="drawing" width="200"/>
+<img src="photos/stray_wires_shown.png" alt="drawing" width="200"/>
 
 # 4. Conclusion
 Well I hope this document was enough to guide you in assembling the grain sensor PCB board. If not you can make an issue in the github, or if you bought a kit from me you can reach out directly.
