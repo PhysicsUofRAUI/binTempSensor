@@ -44,36 +44,36 @@ OneWire binOneOneWire(BIN_ONE_ONE_WIRE_BUS);
 
 DallasTemperature binOneSensors(&binOneOneWire);
 
-DeviceAddress one_top_address = { 0x28, 0x63, 0x38, 0xF3, 0x4C, 0x20, 0x01, 0xD2 };
-DeviceAddress one_middle_address = { 0x28, 0xF5, 0x9E, 0x2A, 0x51, 0x20, 0x01, 0xB6 };
-DeviceAddress one_bottom_address = { 0x28, 0x3B, 0xFB, 0x0F, 0x4F, 0x20, 0x01, 0xB6 };
+DeviceAddress one_top_address = { Place your addresses here };
+DeviceAddress one_middle_address = {  };
+DeviceAddress one_bottom_address = {  };
 
 // Bin Two
 OneWire binTwoOneWire(BIN_TWO_ONE_WIRE_BUS);
 
 DallasTemperature binTwoSensors(&binTwoOneWire);
 
-DeviceAddress two_top_address = { 0x28, 0xDE, 0x0E, 0xB3, 0x50, 0x20, 0x01, 0x96 };
-DeviceAddress two_middle_address = { 0x28, 0x9C, 0xF4, 0x07, 0X4F, 0x20, 0x01, 0x1C };
-DeviceAddress two_bottom_address = { 0x28, 0xE3, 0x8B, 0x20, 0x51, 0x20, 0x01, 0xEA };
+DeviceAddress two_top_address = {  };
+DeviceAddress two_middle_address = {  };
+DeviceAddress two_bottom_address = {  };
 
 // Bin Three
 OneWire binThreeOneWire(BIN_THREE_ONE_WIRE_BUS);
 
 DallasTemperature binThreeSensors(&binThreeOneWire);
 
-DeviceAddress three_top_address = { 0x28, 0xC2, 0x21, 0x0A, 0x0D, 0x00, 0x00, 0xDF};
-DeviceAddress three_middle_address = { 0x28, 0xEE, 0x6A, 0x0A, 0x0D, 0x00, 0x00, 0x83};
-DeviceAddress three_bottom_address = { 0x28, 0x2C, 0xAA, 0x0B, 0x0D, 0x00, 0x00, 0xDF};
+DeviceAddress three_top_address = {  };
+DeviceAddress three_middle_address = {  };
+DeviceAddress three_bottom_address = {  };
 
 // Bin Four
 OneWire binFourOneWire(BIN_FOUR_ONE_WIRE_BUS);
 
 DallasTemperature binFourSensors(&binFourOneWire);
 
-DeviceAddress four_top_address = {};
-DeviceAddress four_middle_address = {};
-DeviceAddress four_bottom_address = {};
+DeviceAddress four_top_address = {  };
+DeviceAddress four_middle_address = {  };
+DeviceAddress four_bottom_address = {  };
 
 unsigned long last_time;
 

@@ -4,10 +4,10 @@
 #include <Arduino_ConnectionHandler.h>
 
 
-const char THING_ID[]      = "";
+const char THING_ID[]      = "thing-id-goes-here";
 
-const char SSID[]     = "";    // Network SSID (name)
-const char PASS[]     = "";    // Network password (use for WPA, or use as key for WEP)
+const char SSID[]     = "network-name-goes-here";    // Network SSID (name)
+const char PASS[]     = "network-password-goes-here";    // Network password (use for WPA, or use as key for WEP)
 
 
 float one_top;
